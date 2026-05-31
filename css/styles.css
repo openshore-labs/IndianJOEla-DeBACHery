@@ -72,34 +72,22 @@ html, body {
 @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 
 /* ---------- Layout ---------- */
-.cover {
+.masthead {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   text-align: center;
-  padding: 4vh 5vw;
-  gap: clamp(0.6rem, 2vh, 1.6rem);
+  /* extra top padding so Joe's cap has room to pop above the title */
+  padding: clamp(2.4rem, 7vh, 5rem) 5vw clamp(1rem, 3vh, 2rem);
 }
 
-/* ---------- Kicker banner ---------- */
-.kicker {
-  font-family: "Luckiest Guy", "Bangers", cursive;
-  letter-spacing: 2px;
-  font-size: clamp(1rem, 3.2vw, 1.8rem);
-  color: var(--comic-cream);
-  background: var(--ink);
-  padding: 0.45rem 1.4rem;
-  border-radius: 999px;
-  border: 4px solid var(--comic-red);
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4);
-  transform: rotate(-2deg);
-  text-transform: uppercase;
+/* Open canvas for the rest of the site (to be filled in). */
+.content {
+  position: relative;
+  z-index: 1;
 }
-.kicker__star { color: var(--comic-red); }
 
 /* =========================================================
    THE TITLE
@@ -189,47 +177,6 @@ html, body {
 @keyframes joe-blink {
   0%, 92%, 100% { opacity: 1; }
   94%, 98%      { opacity: 1; transform: scaleY(0.1); }
-}
-
-/* ---------- Tagline ---------- */
-.tagline {
-  font-family: "Luckiest Guy", "Bangers", cursive;
-  font-size: clamp(1.1rem, 4vw, 2.4rem);
-  color: var(--comic-cream);
-  background: var(--comic-red);
-  padding: 0.3rem 1.4rem;
-  border: 4px solid var(--ink);
-  border-radius: 8px;
-  box-shadow: 5px 5px 0 var(--ink);
-  transform: rotate(1.5deg);
-  letter-spacing: 1px;
-}
-
-/* ---------- Enter button ---------- */
-.enter-btn {
-  font-family: "Luckiest Guy", "Bangers", cursive;
-  cursor: pointer;
-  font-size: clamp(1.1rem, 3.5vw, 2rem);
-  letter-spacing: 1px;
-  color: var(--ink);
-  background: var(--comic-cream);
-  border: 5px solid var(--ink);
-  border-radius: 12px;
-  padding: 0.6rem 2rem;
-  margin-top: 0.6rem;
-  box-shadow: 6px 6px 0 var(--comic-red), 6px 6px 0 4px var(--ink);
-  transition: transform 0.08s ease, box-shadow 0.08s ease;
-}
-.enter-btn:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--comic-red), 9px 9px 0 4px var(--ink); }
-.enter-btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--comic-red), 2px 2px 0 4px var(--ink); }
-
-/* ---------- Footer ---------- */
-.guest-count {
-  font-family: "Luckiest Guy", "Bangers", cursive;
-  font-size: clamp(0.9rem, 2.6vw, 1.4rem);
-  color: var(--ink);
-  letter-spacing: 2px;
-  margin-top: 0.4rem;
 }
 
 /* ---------- Reduced motion ---------- */
