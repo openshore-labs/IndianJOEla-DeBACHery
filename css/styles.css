@@ -1,0 +1,238 @@
+/* =========================================================
+   IndianJOEla — Bachelor Party cover page
+   Comic-book / pulp-adventure theme
+   ========================================================= */
+
+/* Self-hosted comic fonts (work offline, no external dependency) */
+@font-face {
+  font-family: "Bangers";
+  src: url("../fonts/Bangers.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Luckiest Guy";
+  src: url("../fonts/LuckiestGuy.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --comic-red: #d62828;
+  --comic-red-dark: #8c1414;
+  --comic-cream: #f7e9c8;
+  --comic-tan: #e9d3a0;
+  --ink: #1a1a1a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: "Bangers", "Luckiest Guy", system-ui, sans-serif;
+  background: #1c130b;
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ---------- Comic backdrop ---------- */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 50% 38%, #ffe9b8 0%, #f3c969 45%, #d99b3c 100%);
+  overflow: hidden;
+}
+
+/* sunburst rays spinning slowly behind the title */
+.rays {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 220vmax;
+  height: 220vmax;
+  transform: translate(-50%, -50%);
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.55) 0deg 6deg,
+    rgba(255, 255, 255, 0) 6deg 12deg
+  );
+  opacity: 0.35;
+  animation: spin 90s linear infinite;
+}
+
+/* halftone dot overlay */
+.halftone {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(140, 20, 20, 0.18) 1.5px, transparent 1.6px);
+  background-size: 16px 16px;
+  mix-blend-mode: multiply;
+}
+
+@keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* ---------- Layout ---------- */
+.cover {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4vh 5vw;
+  gap: clamp(0.6rem, 2vh, 1.6rem);
+}
+
+/* ---------- Kicker banner ---------- */
+.kicker {
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  letter-spacing: 2px;
+  font-size: clamp(1rem, 3.2vw, 1.8rem);
+  color: var(--comic-cream);
+  background: var(--ink);
+  padding: 0.45rem 1.4rem;
+  border-radius: 999px;
+  border: 4px solid var(--comic-red);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4);
+  transform: rotate(-2deg);
+  text-transform: uppercase;
+}
+.kicker__star { color: var(--comic-red); }
+
+/* =========================================================
+   THE TITLE
+   ========================================================= */
+.title {
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  line-height: 0.9;
+  font-size: clamp(3rem, 13vw, 11rem);
+  letter-spacing: 1px;
+  /* comic 3D + outline using stacked shadows */
+  color: var(--comic-red);
+  -webkit-text-stroke: clamp(2px, 0.6vw, 6px) var(--ink);
+  paint-order: stroke fill;
+  text-shadow:
+    3px 3px 0 var(--comic-red-dark),
+    6px 6px 0 var(--comic-red-dark),
+    9px 9px 0 var(--ink),
+    11px 11px 14px rgba(0, 0, 0, 0.45);
+  transform: rotate(-3deg);
+  margin-top: 0.28em;
+  user-select: none;
+}
+.title__part { display: inline-block; }
+.title__joe {
+  display: inline-flex;
+  align-items: center;
+  /* the JOE letters sit a touch larger for emphasis */
+}
+
+/* ---------- The "O" PORTAL ---------- */
+.portal {
+  position: relative;
+  display: inline-block;
+  /* sized relative to the title font */
+  width: 1.15em;
+  height: 1.15em;
+  margin: 0 0.02em;
+  vertical-align: middle;
+  /* let Joe pop ABOVE the title */
+  transform: translateY(-0.06em);
+}
+
+/* the red ring = the actual letter O */
+.portal__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 60%, #3a2a18 0%, #120c06 70%);
+  border: 0.16em solid var(--comic-red);
+  box-shadow:
+    inset 0 0 0 0.05em var(--ink),
+    0 0 0 0.05em var(--ink),
+    0.07em 0.07em 0 var(--comic-red-dark),
+    0.12em 0.12em 0 var(--ink);
+  /* -webkit-text-stroke doesn't apply to the ring, so emulate outline */
+}
+
+/* the cartoon Joe svg fills the portal and pops over the top edge */
+.joe {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 138%;
+  height: 138%;
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+  filter: drop-shadow(0.04em 0.06em 0.05em rgba(0, 0, 0, 0.45));
+  animation: joe-pop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
+}
+.joe__body { animation: joe-bob 3.2s ease-in-out 1.4s infinite; transform-origin: 50% 100%; }
+.joe__eyes { animation: joe-blink 5s steps(1) 2s infinite; transform-origin: 50% 47%; }
+
+@keyframes joe-pop {
+  0%   { transform: translateX(-50%) translateY(40%) scale(0.6); opacity: 0; }
+  60%  { transform: translateX(-50%) translateY(-6%) scale(1.04); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
+}
+@keyframes joe-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-3%) rotate(-1.5deg); }
+}
+@keyframes joe-blink {
+  0%, 92%, 100% { opacity: 1; }
+  94%, 98%      { opacity: 1; transform: scaleY(0.1); }
+}
+
+/* ---------- Tagline ---------- */
+.tagline {
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  font-size: clamp(1.1rem, 4vw, 2.4rem);
+  color: var(--comic-cream);
+  background: var(--comic-red);
+  padding: 0.3rem 1.4rem;
+  border: 4px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 5px 5px 0 var(--ink);
+  transform: rotate(1.5deg);
+  letter-spacing: 1px;
+}
+
+/* ---------- Enter button ---------- */
+.enter-btn {
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  cursor: pointer;
+  font-size: clamp(1.1rem, 3.5vw, 2rem);
+  letter-spacing: 1px;
+  color: var(--ink);
+  background: var(--comic-cream);
+  border: 5px solid var(--ink);
+  border-radius: 12px;
+  padding: 0.6rem 2rem;
+  margin-top: 0.6rem;
+  box-shadow: 6px 6px 0 var(--comic-red), 6px 6px 0 4px var(--ink);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.enter-btn:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--comic-red), 9px 9px 0 4px var(--ink); }
+.enter-btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--comic-red), 2px 2px 0 4px var(--ink); }
+
+/* ---------- Footer ---------- */
+.guest-count {
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  font-size: clamp(0.9rem, 2.6vw, 1.4rem);
+  color: var(--ink);
+  letter-spacing: 2px;
+  margin-top: 0.4rem;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .rays, .joe, .joe__body, .joe__eyes { animation: none; }
+}
