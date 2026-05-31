@@ -2,152 +2,236 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IndianJOEla — The Bachelor Party</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#e7392e" />
+  <title>IndianJOEla — Joe's Bachelor Party</title>
+  <meta name="description" content="Joe's Bachelor Party — Indianola, WA. Photos, schedule, what to bring, and how to get there." />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <!-- Comic halftone / burst backdrop -->
-  <div class="backdrop" aria-hidden="true">
-    <div class="rays"></div>
-    <div class="halftone"></div>
+  <!-- newsprint texture overlay -->
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <div class="strip">
+
+    <!-- ============================ MASTHEAD ============================ -->
+    <header class="masthead" id="top">
+      <div class="masthead__dateline">
+        <span>SUNDAY FUNNIES</span>
+        <span class="masthead__price">THE BACHELOR EDITION • 25¢</span>
+      </div>
+
+      <h1 class="logo" aria-label="IndianJOEla">
+        <span class="logo__main">Indian<span class="logo__joe">JOE</span>la</span>
+      </h1>
+
+      <p class="logo__sub">Joe's Bachelor Party <b>·</b> Indianola, WA</p>
+
+      <!-- Foxtrot-style scenery: Mt Rainier over the Puget Sound tide flats -->
+      <div class="scene" role="img" aria-label="Mount Rainier over the Puget Sound tide flats at Indianola">
+        <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- sky -->
+          <rect x="0" y="0" width="400" height="200" fill="#bfe3f2"/>
+          <!-- sun -->
+          <circle cx="328" cy="48" r="22" fill="#ffd23f" stroke="#1c1c1c" stroke-width="3"/>
+          <g stroke="#ffd23f" stroke-width="4" stroke-linecap="round">
+            <line x1="328" y1="10" x2="328" y2="2"/><line x1="362" y1="20" x2="368" y2="14"/>
+            <line x1="376" y1="48" x2="384" y2="48"/><line x1="362" y1="76" x2="368" y2="82"/>
+          </g>
+          <!-- distant evergreen shoreline -->
+          <path d="M0 118 q20 -16 40 0 q18 -14 38 2 q22 -16 44 0 q20 -12 40 2 q24 -16 46 0 q22 -12 44 2 q20 -14 42 0 q18 -10 22 4 V140 H0 Z"
+                fill="#3f7d4f" stroke="#1c1c1c" stroke-width="3"/>
+          <!-- MT RAINIER -->
+          <path d="M118 120 L182 36 q6 -8 12 0 L262 120 Z" fill="#f2f4f8" stroke="#1c1c1c" stroke-width="3.5" stroke-linejoin="round"/>
+          <!-- snow ridges / shading -->
+          <path d="M150 84 l16 14 l14 -12 l16 16 l14 -10" fill="none" stroke="#9fb3c9" stroke-width="3" stroke-linecap="round"/>
+          <path d="M188 40 L150 120 H160 L196 46 Z" fill="#dfe6ef"/>
+          <!-- water -->
+          <rect x="0" y="120" width="400" height="80" fill="#5bb6dd"/>
+          <!-- mountain reflection -->
+          <path d="M118 120 L190 168 L262 120 Z" fill="#7fc8e6" opacity="0.7"/>
+          <!-- tide-flat ripples -->
+          <g stroke="#2b8fc0" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8">
+            <path d="M20 150 q14 -6 28 0 t28 0"/>
+            <path d="M250 158 q14 -6 28 0 t28 0"/>
+            <path d="M120 176 q14 -6 28 0 t28 0"/>
+          </g>
+          <!-- wet tide flat in foreground -->
+          <path d="M0 182 q60 -10 120 0 t160 0 t120 0 V200 H0 Z" fill="#c8a86a" stroke="#1c1c1c" stroke-width="3"/>
+          <!-- little dock -->
+          <g stroke="#1c1c1c" stroke-width="3">
+            <rect x="40" y="150" width="70" height="8" fill="#9a6b3f"/>
+            <line x1="48" y1="158" x2="48" y2="186"/>
+            <line x1="102" y1="158" x2="102" y2="186"/>
+          </g>
+        </svg>
+      </div>
+    </header>
+
+    <!-- ============================ PHOTOS ============================ -->
+    <section class="panel" id="photos">
+      <div class="panel__title">
+        <span class="panel__num">1</span>
+        <h2>The Photo Reel</h2>
+      </div>
+
+      <div class="slideshow" id="slideshow">
+        <div class="slideshow__stage" id="slides">
+          <!-- slides injected by JS; this is the empty-state -->
+          <div class="slide slide--empty" data-empty>
+            <div class="speech-bubble">
+              <p><b>No pics yet!</b><br/>Be the first legend to add one. 👇</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="slideshow__arrow slideshow__arrow--prev" id="prevBtn" aria-label="Previous photo">‹</button>
+        <button class="slideshow__arrow slideshow__arrow--next" id="nextBtn" aria-label="Next photo">›</button>
+
+        <div class="slideshow__dots" id="dots" aria-hidden="true"></div>
+        <div class="slideshow__count" id="counter"></div>
+      </div>
+
+      <!-- UPLOAD -->
+      <label class="upload-btn" for="fileInput">
+        <span class="upload-btn__icon">📸</span>
+        <span class="upload-btn__text">Add a Photo</span>
+        <input id="fileInput" type="file" accept="image/*" multiple hidden />
+      </label>
+      <p class="upload-hint" id="uploadHint">Snap one or pick from your camera roll — it pops into everyone's reel.</p>
+    </section>
+
+    <!-- ============================ SCHEDULE ============================ -->
+    <section class="panel" id="schedule">
+      <div class="panel__title">
+        <span class="panel__num">2</span>
+        <h2>The Game Plan</h2>
+      </div>
+
+      <ol class="timeline" id="timeline">
+        <li class="timeline__item" data-edit>
+          <span class="timeline__when">FRI · PM</span>
+          <div class="timeline__what">
+            <b>Roll into Indianola</b>
+            <p>Catch the ferry, drop bags at the house, crack the first cold one. <em>[edit me]</em></p>
+          </div>
+        </li>
+        <li class="timeline__item" data-edit>
+          <span class="timeline__when">SAT · AM</span>
+          <div class="timeline__what">
+            <b>Tide-flat morning</b>
+            <p>Coffee + a walk out on the flats with Rainier showing off. <em>[edit me]</em></p>
+          </div>
+        </li>
+        <li class="timeline__item" data-edit>
+          <span class="timeline__when">SAT · PM</span>
+          <div class="timeline__what">
+            <b>Main event</b>
+            <p>The big one. Details TBD. <em>[edit me]</em></p>
+          </div>
+        </li>
+        <li class="timeline__item" data-edit>
+          <span class="timeline__when">SUN</span>
+          <div class="timeline__what">
+            <b>Recovery & roll out</b>
+            <p>Breakfast, cleanup, ferry home. <em>[edit me]</em></p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===================== NEED TO KNOW / WHAT TO BRING ===================== -->
+    <section class="panel" id="info">
+      <div class="panel__title">
+        <span class="panel__num">3</span>
+        <h2>Need-to-Know</h2>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card info-card--know">
+          <h3>📋 The Lowdown</h3>
+          <ul data-edit>
+            <li>Dates: <b>[add dates]</b></li>
+            <li>Home base: <b>[add address]</b></li>
+            <li>Cell service is patchy — download stuff first.</li>
+            <li>Chip in for food/house: <b>[$ amount]</b></li>
+            <li>Group chat: <b>[link]</b></li>
+          </ul>
+        </div>
+
+        <div class="info-card info-card--bring">
+          <h3>🎒 What to Bring</h3>
+          <ul class="checklist" data-edit>
+            <li>Layers — it's the PNW</li>
+            <li>Rain shell &amp; closed shoes</li>
+            <li>Swimsuit / towel</li>
+            <li>Your beverage of choice</li>
+            <li>Sunglasses &amp; sunscreen</li>
+            <li>A good attitude 😎</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ GETTING THERE ============================ -->
+    <section class="panel" id="map">
+      <div class="panel__title">
+        <span class="panel__num">4</span>
+        <h2>Getting There</h2>
+      </div>
+
+      <div class="route" data-edit>
+        <p class="route__lead">Indianola sits on the Kitsap Peninsula across Puget Sound from Seattle. Two easy ways in:</p>
+
+        <div class="route__step">
+          <span class="route__badge">⛴️</span>
+          <div>
+            <b>Ferry via Bainbridge</b>
+            <p>Seattle → Bainbridge Island ferry (~35 min), then ~25 min drive north to Indianola.</p>
+          </div>
+        </div>
+        <div class="route__step">
+          <span class="route__badge">⛴️</span>
+          <div>
+            <b>Ferry via Kingston</b>
+            <p>Edmonds → Kingston ferry (~30 min), then ~15 min drive south.</p>
+          </div>
+        </div>
+        <div class="route__step">
+          <span class="route__badge">🚗</span>
+          <div>
+            <b>All the way around</b>
+            <p>Drive south through Tacoma + over the Narrows (~2 hr, no ferry). Good backup at odd hours.</p>
+          </div>
+        </div>
+
+        <a class="map-btn" id="mapBtn" href="https://maps.google.com/?q=Indianola,+WA" target="_blank" rel="noopener">
+          🗺️ Open in Maps
+        </a>
+        <p class="route__note">Tip: ferries fill up on weekends — check sailing times &amp; build in a buffer. <em>[edit details]</em></p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Made with 🍺 for Joe — see you on the tide flats.</p>
+      <p class="footer__small">IndianJOEla · Indianola, WA</p>
+    </footer>
   </div>
 
-  <header class="masthead">
-    <!-- THE TITLE -->
-    <h1 class="title" aria-label="IndianJOEla">
-      <span class="title__part">Indian</span><span class="title__joe">J</span><!--
-   --><span class="title__joe">
-        <!-- The famous "O" PORTAL with cartoon Joe popping out -->
-        <span class="portal" role="img" aria-label="Cartoon of Joe popping out of the letter O">
-          <span class="portal__ring"></span>
+  <!-- ============================ BOTTOM NAV ============================ -->
+  <nav class="tabbar" aria-label="Sections">
+    <a href="#photos" class="tab" data-tab="photos"><span>📷</span>Photos</a>
+    <a href="#schedule" class="tab" data-tab="schedule"><span>📅</span>Plan</a>
+    <a href="#info" class="tab" data-tab="info"><span>🎒</span>Info</a>
+    <a href="#map" class="tab" data-tab="map"><span>🧭</span>Map</a>
+  </nav>
 
-          <!-- ===================== CARTOON JOE ===================== -->
-          <svg class="joe" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <clipPath id="portalClip">
-                <circle cx="150" cy="150" r="138" />
-              </clipPath>
-            </defs>
+  <!-- toast for upload feedback -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-            <g clip-path="url(#portalClip)">
-              <!-- Hand-drawn cartoon Joe — flat cel colors + bold ink line.
-                   Drawn back-to-front. Default ink: #2a2018 -->
-              <g class="joe__body"
-                 stroke="#2a2018" stroke-width="5"
-                 stroke-linejoin="round" stroke-linecap="round">
-
-                <!-- ===== OLIVE JACKET / SHOULDERS ===== -->
-                <path d="M30 300 V266 Q46 228 98 215 Q126 207 150 209 Q174 207 202 215 Q254 228 270 266 V300 Z"
-                      fill="#5f6b3c"/>
-                <!-- lapel/collar creases -->
-                <path d="M150 212 L116 250 M150 212 L184 250" fill="none" stroke="#414a27" stroke-width="4"/>
-
-                <!-- ===== BLACK TEE ===== -->
-                <path d="M120 218 Q150 246 180 218 L184 258 Q150 276 116 258 Z" fill="#191919"/>
-                <!-- gold chain -->
-                <path d="M124 224 Q150 252 176 224" fill="none" stroke="#e9c33b" stroke-width="4"/>
-
-                <!-- ===== NECK ===== -->
-                <path d="M122 196 Q150 220 178 196 V220 Q150 238 122 220 Z" fill="#f2bd92"/>
-                <path d="M122 200 Q150 220 178 200" fill="none" stroke="#d39a6a" stroke-width="3"/>
-
-                <!-- ===== EARS ===== -->
-                <path d="M82 148 Q62 144 64 166 Q68 182 86 174 Z" fill="#f2bd92"/>
-                <path d="M218 148 Q238 144 236 166 Q232 182 214 174 Z" fill="#f2bd92"/>
-                <path d="M74 158 Q82 160 84 168" fill="none" stroke="#d39a6a" stroke-width="3"/>
-                <path d="M226 158 Q218 160 216 168" fill="none" stroke="#d39a6a" stroke-width="3"/>
-
-                <!-- ===== SIDEBURNS (dark hair before ears) ===== -->
-                <path d="M86 126 Q82 152 94 172 Q80 162 76 138 Z" fill="#2a2018" stroke="none"/>
-                <path d="M214 126 Q218 152 206 172 Q220 162 224 138 Z" fill="#2a2018" stroke="none"/>
-
-                <!-- ===== HEAD / FACE ===== -->
-                <path d="M78 110 Q72 158 100 206 Q120 246 150 252 Q180 246 200 206 Q228 158 222 110 Q150 96 78 110 Z"
-                      fill="#f2bd92"/>
-                <!-- cel shadow down the right cheek/jaw -->
-                <path d="M198 116 Q220 160 192 208 Q180 232 160 244 Q188 232 206 196 Q224 156 214 114 Z"
-                      fill="#e3a373" stroke="none" opacity="0.65"/>
-                <!-- shadow cast by the brim -->
-                <path d="M92 122 Q150 112 208 122 Q150 134 92 122 Z"
-                      fill="#e3a373" stroke="none" opacity="0.55"/>
-
-                <!-- ===== CHEEK BLUSH (from the big grin) ===== -->
-                <ellipse cx="102" cy="186" rx="15" ry="10" fill="#ef9b7a" stroke="none" opacity="0.5"/>
-                <ellipse cx="198" cy="186" rx="15" ry="10" fill="#ef9b7a" stroke="none" opacity="0.5"/>
-
-                <!-- ===== EYEBROWS — thick, dark, raised (joyful) ===== -->
-                <path d="M96 134 Q116 118 142 128 Q118 126 102 140 Z" fill="#2a2018" stroke-width="2"/>
-                <path d="M204 134 Q184 118 158 128 Q182 126 198 140 Z" fill="#2a2018" stroke-width="2"/>
-
-                <!-- ===== EYES — open, bright, happy ===== -->
-                <g class="joe__eyes">
-                  <!-- left -->
-                  <path d="M102 150 Q122 140 142 150 Q124 162 102 150 Z" fill="#fff" stroke-width="4"/>
-                  <circle cx="122" cy="150" r="6.5" fill="#2a2018" stroke="none"/>
-                  <circle cx="124.5" cy="147.5" r="2.2" fill="#fff" stroke="none"/>
-                  <!-- right -->
-                  <path d="M158 150 Q178 140 198 150 Q180 162 158 150 Z" fill="#fff" stroke-width="4"/>
-                  <circle cx="178" cy="150" r="6.5" fill="#2a2018" stroke="none"/>
-                  <circle cx="180.5" cy="147.5" r="2.2" fill="#fff" stroke="none"/>
-                </g>
-
-                <!-- ===== NOSE ===== -->
-                <path d="M150 156 Q157 174 150 184 Q143 188 136 182"
-                      fill="none" stroke="#d39a6a" stroke-width="4"/>
-
-                <!-- ===== BIG OPEN GRIN ===== -->
-                <!-- mouth interior -->
-                <path d="M104 196 Q150 204 196 196 Q182 244 150 244 Q118 244 104 196 Z" fill="#7c2230"/>
-                <!-- upper teeth row -->
-                <path d="M110 198 Q150 205 190 198 Q150 218 110 198 Z" fill="#fff" stroke="none"/>
-                <path d="M131 199 V212 M150 200 V214 M169 199 V212"
-                      fill="none" stroke="#d9d9d9" stroke-width="1.6"/>
-                <!-- tongue -->
-                <path d="M126 230 Q150 222 174 230 Q166 244 150 244 Q134 244 126 230 Z"
-                      fill="#e06d72" stroke="none"/>
-                <!-- bold mouth outline over everything -->
-                <path d="M104 196 Q150 204 196 196 Q182 244 150 244 Q118 244 104 196 Z"
-                      fill="none" stroke-width="5.5"/>
-                <!-- grin creases / dimples -->
-                <path d="M96 182 Q96 196 106 206" fill="none" stroke="#d39a6a" stroke-width="3"/>
-                <path d="M204 182 Q204 196 194 206" fill="none" stroke="#d39a6a" stroke-width="3"/>
-
-                <!-- ===================== NAVY CAP ===================== -->
-                <!-- curved bill (sits above the brows) -->
-                <path d="M80 112 Q150 124 220 112 Q228 126 184 132 Q150 137 116 132 Q72 126 80 112 Z"
-                      fill="#16223c"/>
-                <!-- crown / dome -->
-                <path d="M76 114 Q60 50 150 32 Q240 50 224 114 Q150 100 76 114 Z" fill="#24375c"/>
-                <!-- panel seams -->
-                <path d="M150 33 Q150 70 150 102" fill="none" stroke="#16223c" stroke-width="3" opacity="0.7"/>
-                <path d="M106 44 Q118 74 121 100" fill="none" stroke="#16223c" stroke-width="2.5" opacity="0.6"/>
-                <path d="M194 44 Q182 74 179 100" fill="none" stroke="#16223c" stroke-width="2.5" opacity="0.6"/>
-                <!-- top button -->
-                <circle cx="150" cy="34" r="5" fill="#16223c" stroke-width="2"/>
-                <!-- crown highlight -->
-                <path d="M90 74 Q120 50 160 50" fill="none" stroke="#3c5a85" stroke-width="5" opacity="0.7"/>
-                <!-- cursive red R on the front-left panel -->
-                <text x="130" y="98" text-anchor="middle"
-                      font-family="'Luckiest Guy','Bangers',cursive"
-                      font-size="54" fill="#e01f1f" stroke="#8a1414" stroke-width="2"
-                      transform="rotate(-13 130 80)">R</text>
-              </g>
-            </g>
-
-            <!-- inner ring shadow of the portal -->
-            <circle cx="150" cy="150" r="135" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="8"/>
-          </svg>
-          <!-- =================== /CARTOON JOE =================== -->
-        </span>
-      </span><!--
-   --><span class="title__part title__part--la">la</span>
-    </h1>
-  </header>
-
-  <!-- Page content will be built out below. -->
-  <main class="content"></main>
-
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/slideshow.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

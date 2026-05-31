@@ -1,185 +1,458 @@
 /* =========================================================
-   IndianJOEla — Bachelor Party cover page
-   Comic-book / pulp-adventure theme
+   IndianJOEla — Joe's Bachelor Party
+   Foxtrot / Sunday-funnies comic style · mobile-first
    ========================================================= */
 
-/* Self-hosted comic fonts (work offline, no external dependency) */
-@font-face {
-  font-family: "Bangers";
-  src: url("../fonts/Bangers.ttf") format("truetype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Luckiest Guy";
-  src: url("../fonts/LuckiestGuy.ttf") format("truetype");
-  font-display: swap;
-}
+/* ---------- Fonts (self-hosted) ---------- */
+@font-face { font-family: "Bangers";      src: url("../fonts/Bangers.ttf")            format("truetype"); font-display: swap; }
+@font-face { font-family: "Luckiest Guy"; src: url("../fonts/LuckiestGuy.ttf")        format("truetype"); font-display: swap; }
+@font-face { font-family: "Comic Neue";   src: url("../fonts/ComicNeue-Regular.ttf")  format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Comic Neue";   src: url("../fonts/ComicNeue-Bold.ttf")     format("truetype"); font-weight: 700; font-display: swap; }
 
 :root {
-  --comic-red: #d62828;
-  --comic-red-dark: #8c1414;
-  --comic-cream: #f7e9c8;
-  --comic-tan: #e9d3a0;
-  --ink: #1a1a1a;
+  --ink:    #1c1c1c;
+  --paper:  #f7efd9;   /* newsprint cream */
+  --red:    #e7392e;   /* foxtrot red */
+  --blue:   #2f6fd0;
+  --yellow: #ffd23f;
+  --green:  #4ba14a;
+  --sky:    #bfe3f2;
+  --sound:  #5bb6dd;
+  --panel-bg: #fffdf6;
+  --shadow: 5px 5px 0 var(--ink);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-html, body {
-  height: 100%;
-  font-family: "Bangers", "Luckiest Guy", system-ui, sans-serif;
-  background: #1c130b;
+html { scroll-behavior: smooth; scroll-padding-top: 12px; }
+
+body {
+  font-family: "Comic Neue", "Comic Sans MS", system-ui, sans-serif;
+  font-weight: 700;
   color: var(--ink);
+  background:
+    radial-gradient(var(--ink) 0.5px, transparent 0.6px) 0 0 / 7px 7px,
+    var(--paper);
+  background-blend-mode: soft-light;
+  line-height: 1.4;
+  /* room for bottom nav */
+  padding-bottom: 84px;
   overflow-x: hidden;
 }
 
-/* ---------- Comic backdrop ---------- */
-.backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background:
-    radial-gradient(circle at 50% 38%, #ffe9b8 0%, #f3c969 45%, #d99b3c 100%);
-  overflow: hidden;
-}
-
-/* sunburst rays spinning slowly behind the title */
-.rays {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  width: 220vmax;
-  height: 220vmax;
-  transform: translate(-50%, -50%);
-  background: repeating-conic-gradient(
-    from 0deg,
-    rgba(255, 255, 255, 0.55) 0deg 6deg,
-    rgba(255, 255, 255, 0) 6deg 12deg
-  );
-  opacity: 0.35;
-  animation: spin 90s linear infinite;
-}
-
-/* halftone dot overlay */
-.halftone {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(140, 20, 20, 0.18) 1.5px, transparent 1.6px);
-  background-size: 16px 16px;
+/* faint newsprint grain */
+.paper-grain {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1.2px);
+  background-size: 4px 4px;
   mix-blend-mode: multiply;
 }
 
-@keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
-
-/* ---------- Layout ---------- */
-.masthead {
+.strip {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  text-align: center;
-  /* extra top padding so Joe's cap has room to pop above the title */
-  padding: clamp(2.4rem, 7vh, 5rem) 5vw clamp(1rem, 3vh, 2rem);
-}
-
-/* Open canvas for the rest of the site (to be filled in). */
-.content {
-  position: relative;
-  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 14px 14px 28px;
 }
 
 /* =========================================================
-   THE TITLE
+   MASTHEAD
    ========================================================= */
-.title {
+.masthead {
+  border: 4px solid var(--ink);
+  background: var(--panel-bg);
+  box-shadow: var(--shadow);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+.masthead__dateline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-bottom: 3px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.masthead__price { opacity: 0.85; }
+
+.logo {
   font-family: "Luckiest Guy", "Bangers", cursive;
+  text-align: center;
+  font-size: clamp(2.3rem, 12.5vw, 4.2rem);
+  line-height: 0.95;
+  padding: 14px 10px 2px;
+  color: var(--red);
+  -webkit-text-stroke: 2.5px var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 3px 3px 0 var(--ink);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.logo__joe { color: var(--yellow); }
+
+.logo__sub {
+  text-align: center;
+  font-size: clamp(0.95rem, 4.4vw, 1.3rem);
+  padding: 2px 10px 12px;
+  color: var(--ink);
+}
+.logo__sub b { color: var(--red); }
+
+.scene {
+  border-top: 4px solid var(--ink);
+  line-height: 0;
+}
+.scene svg { width: 100%; height: auto; display: block; }
+
+/* =========================================================
+   PANELS (comic frames)
+   ========================================================= */
+.panel {
+  border: 4px solid var(--ink);
+  background: var(--panel-bg);
+  box-shadow: var(--shadow);
+  border-radius: 6px;
+  padding: 16px 14px 18px;
+  margin-bottom: 22px;
+}
+.panel:nth-of-type(odd)  { transform: rotate(-0.5deg); }
+.panel:nth-of-type(even) { transform: rotate(0.5deg); }
+
+.panel__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.panel__num {
+  font-family: "Luckiest Guy", cursive;
+  background: var(--red);
+  color: #fff;
+  -webkit-text-stroke: 1.5px var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  font-size: 1.3rem;
+  box-shadow: 2px 2px 0 var(--ink);
+  flex: none;
+}
+.panel__title h2 {
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  font-size: clamp(1.5rem, 7vw, 2.2rem);
+  letter-spacing: 0.5px;
+  color: var(--ink);
+}
+
+/* =========================================================
+   SLIDESHOW
+   ========================================================= */
+.slideshow {
+  position: relative;
+  border: 4px solid var(--ink);
+  border-radius: 4px;
+  background:
+    repeating-conic-gradient(var(--yellow) 0% 25%, #ffe27a 0% 50%) 0 0 / 28px 28px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 3px #fff, 3px 3px 0 var(--ink);
+}
+.slideshow__stage { position: absolute; inset: 0; }
+
+.slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  display: grid; place-items: center;
+}
+.slide.is-active { opacity: 1; }
+.slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide--empty {
+  opacity: 1;
+  background:
+    repeating-conic-gradient(#fff 0% 25%, #f2f2f2 0% 50%) 0 0 / 24px 24px;
+  padding: 20px;
+}
+
+/* comic speech bubble */
+.speech-bubble {
+  position: relative;
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  padding: 16px 18px;
+  text-align: center;
+  font-size: 1.1rem;
+  box-shadow: 3px 3px 0 var(--ink);
+  max-width: 80%;
+}
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -16px; left: 32px;
+  border: 9px solid transparent;
+  border-top-color: var(--ink);
+}
+.speech-bubble b { color: var(--red); }
+
+.slideshow__arrow {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 42px; height: 42px;
+  border: 3px solid var(--ink);
+  background: #fff;
+  border-radius: 50%;
+  font-family: "Luckiest Guy", cursive;
+  font-size: 1.6rem; line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink);
+  display: none;           /* shown by JS when >1 slide */
+  z-index: 3;
+  padding-bottom: 4px;
+}
+.slideshow__arrow:active { transform: translateY(-50%) translate(2px,2px); box-shadow: none; }
+.slideshow__arrow--prev { left: 8px; }
+.slideshow__arrow--next { right: 8px; }
+
+.slideshow__dots {
+  position: absolute;
+  bottom: 8px; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 6px;
+  z-index: 3;
+}
+.dot {
+  width: 9px; height: 9px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: #fff;
+}
+.dot.is-active { background: var(--red); }
+
+.slideshow__count {
+  position: absolute;
+  top: 8px; right: 8px;
+  background: var(--ink); color: #fff;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  z-index: 3;
+}
+.slideshow__count:empty { display: none; }
+
+/* =========================================================
+   UPLOAD BUTTON
+   ========================================================= */
+.upload-btn {
+  margin-top: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: nowrap;
-  line-height: 0.9;
-  font-size: clamp(3rem, 13vw, 11rem);
+  gap: 10px;
+  width: 100%;
+  background: var(--red);
+  color: #fff;
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  font-size: 1.4rem;
   letter-spacing: 1px;
-  /* comic 3D + outline using stacked shadows */
-  color: var(--comic-red);
-  -webkit-text-stroke: clamp(2px, 0.6vw, 6px) var(--ink);
-  paint-order: stroke fill;
-  text-shadow:
-    3px 3px 0 var(--comic-red-dark),
-    6px 6px 0 var(--comic-red-dark),
-    9px 9px 0 var(--ink),
-    11px 11px 14px rgba(0, 0, 0, 0.45);
-  transform: rotate(-3deg);
-  margin-top: 0.28em;
-  user-select: none;
+  padding: 14px;
+  border: 4px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  -webkit-text-stroke: 1px var(--ink);
+  transition: transform 0.06s, box-shadow 0.06s;
 }
-.title__part { display: inline-block; }
-.title__joe {
-  display: inline-flex;
+.upload-btn:active { transform: translate(4px,4px); box-shadow: 1px 1px 0 var(--ink); }
+.upload-btn__icon { font-size: 1.5rem; -webkit-text-stroke: 0; }
+.upload-btn.is-busy { opacity: 0.7; pointer-events: none; }
+
+.upload-hint {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+/* =========================================================
+   SCHEDULE TIMELINE
+   ========================================================= */
+.timeline { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.timeline__item {
+  display: flex; gap: 12px;
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px 12px;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.timeline__when {
+  flex: none;
+  align-self: flex-start;
+  background: var(--blue);
+  color: #fff;
+  font-family: "Luckiest Guy", cursive;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  padding: 6px 8px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  min-width: 64px;
+  text-align: center;
+}
+.timeline__what b { color: var(--red); font-size: 1.1rem; }
+.timeline__what p { font-size: 0.92rem; }
+.timeline__what em { color: #999; font-style: italic; font-weight: 400; }
+
+/* =========================================================
+   INFO CARDS
+   ========================================================= */
+.info-grid { display: flex; flex-direction: column; gap: 14px; }
+.info-card {
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.info-card--know  { background: #eaf3ff; }
+.info-card--bring { background: #eafbe7; }
+.info-card h3 {
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+.info-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.info-card li { font-size: 0.95rem; padding-left: 22px; position: relative; }
+.info-card li::before { content: "•"; position: absolute; left: 6px; color: var(--red); font-size: 1.2rem; line-height: 1; }
+.checklist li::before { content: "☐"; color: var(--ink); font-size: 1rem; left: 2px; }
+.info-card b { color: var(--blue); }
+
+/* =========================================================
+   GETTING THERE
+   ========================================================= */
+.route__lead { margin-bottom: 14px; }
+.route__step {
+  display: flex; gap: 12px; align-items: flex-start;
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.route__badge { font-size: 1.6rem; flex: none; }
+.route__step b { color: var(--red); font-size: 1.05rem; }
+.route__step p { font-size: 0.92rem; }
+
+.map-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: var(--blue);
+  color: #fff;
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  padding: 13px;
+  border: 4px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin: 8px 0 10px;
+  -webkit-text-stroke: 1px var(--ink);
+}
+.map-btn:active { transform: translate(4px,4px); box-shadow: 1px 1px 0 var(--ink); }
+.route__note { font-size: 0.85rem; opacity: 0.85; }
+.route__note em, .info-card em, [data-edit] em { color: #b06; font-weight: 400; }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer { text-align: center; padding: 6px 0 4px; }
+.footer p { font-size: 0.95rem; }
+.footer__small {
+  font-family: "Luckiest Guy", cursive;
+  color: var(--red);
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* =========================================================
+   BOTTOM TAB BAR
+   ========================================================= */
+.tabbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 20;
+  display: flex;
+  background: var(--paper);
+  border-top: 4px solid var(--ink);
+  box-shadow: 0 -3px 0 rgba(0,0,0,0.08);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  /* the JOE letters sit a touch larger for emphasis */
+  gap: 2px;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  border-right: 3px solid var(--ink);
+}
+.tab:last-child { border-right: none; }
+.tab span { font-size: 1.4rem; }
+.tab.is-active { background: var(--red); color: #fff; }
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+.toast {
+  position: fixed;
+  left: 50%; bottom: 96px;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--ink);
+  color: #fff;
+  font-family: "Comic Neue", sans-serif;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 50;
+  font-size: 0.95rem;
+  max-width: 86vw;
+  text-align: center;
+}
+.toast.is-show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* =========================================================
+   DESKTOP TWEAKS
+   ========================================================= */
+@media (min-width: 560px) {
+  .info-grid { flex-direction: row; }
+  .info-grid .info-card { flex: 1; }
+  .slideshow__arrow { width: 48px; height: 48px; }
 }
 
-/* ---------- The "O" PORTAL ---------- */
-.portal {
-  position: relative;
-  display: inline-block;
-  /* sized relative to the title font */
-  width: 1.15em;
-  height: 1.15em;
-  margin: 0 0.02em;
-  vertical-align: middle;
-  /* let Joe pop ABOVE the title */
-  transform: translateY(-0.06em);
-}
-
-/* the red ring = the actual letter O */
-.portal__ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 60%, #3a2a18 0%, #120c06 70%);
-  border: 0.16em solid var(--comic-red);
-  box-shadow:
-    inset 0 0 0 0.05em var(--ink),
-    0 0 0 0.05em var(--ink),
-    0.07em 0.07em 0 var(--comic-red-dark),
-    0.12em 0.12em 0 var(--ink);
-  /* -webkit-text-stroke doesn't apply to the ring, so emulate outline */
-}
-
-/* the cartoon Joe svg fills the portal and pops over the top edge */
-.joe {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 138%;
-  height: 138%;
-  transform: translateX(-50%);
-  transform-origin: 50% 100%;
-  filter: drop-shadow(0.04em 0.06em 0.05em rgba(0, 0, 0, 0.45));
-  animation: joe-pop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
-}
-.joe__body { animation: joe-bob 3.2s ease-in-out 1.4s infinite; transform-origin: 50% 100%; }
-.joe__eyes { animation: joe-blink 5s steps(1) 2s infinite; transform-origin: 50% 47%; }
-
-@keyframes joe-pop {
-  0%   { transform: translateX(-50%) translateY(40%) scale(0.6); opacity: 0; }
-  60%  { transform: translateX(-50%) translateY(-6%) scale(1.04); opacity: 1; }
-  100% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
-}
-@keyframes joe-bob {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50%      { transform: translateY(-3%) rotate(-1.5deg); }
-}
-@keyframes joe-blink {
-  0%, 92%, 100% { opacity: 1; }
-  94%, 98%      { opacity: 1; transform: scaleY(0.1); }
-}
-
-/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .rays, .joe, .joe__body, .joe__eyes { animation: none; }
+  html { scroll-behavior: auto; }
+  .slide { transition: none; }
 }
