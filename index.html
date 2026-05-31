@@ -28,104 +28,110 @@
               <clipPath id="portalClip">
                 <circle cx="150" cy="150" r="138" />
               </clipPath>
-              <radialGradient id="skin" cx="45%" cy="40%" r="70%">
-                <stop offset="0%" stop-color="#ffd9b8" />
-                <stop offset="70%" stop-color="#f0b389" />
-                <stop offset="100%" stop-color="#e09a6c" />
-              </radialGradient>
-              <linearGradient id="capTop" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#243a63" />
-                <stop offset="100%" stop-color="#16243f" />
-              </linearGradient>
-              <linearGradient id="capBrim" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#1c2c4c" />
-                <stop offset="100%" stop-color="#0e1729" />
-              </linearGradient>
             </defs>
 
             <g clip-path="url(#portalClip)">
-              <!-- Everything that pops out of the O -->
-              <g class="joe__body">
-                <!-- Shoulders / olive jacket -->
-                <path d="M40 300 V255 q15 -55 60 -70 q50 -16 100 0 q45 15 60 70 V300 Z"
-                      fill="#5d6b3f" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="round"/>
-                <path d="M150 188 v112" stroke="#3f4a2c" stroke-width="6" stroke-linecap="round"/>
-                <!-- black tee collar -->
-                <path d="M118 205 q32 34 64 0 l0 30 q-32 26 -64 0 Z" fill="#171717"/>
-                <!-- gold chain hint -->
-                <path d="M122 214 q28 30 56 0" fill="none" stroke="#e9c33b" stroke-width="4" stroke-linecap="round"/>
+              <!-- Hand-drawn cartoon Joe — flat cel colors + bold ink line.
+                   Drawn back-to-front. Default ink: #2a2018 -->
+              <g class="joe__body"
+                 stroke="#2a2018" stroke-width="5"
+                 stroke-linejoin="round" stroke-linecap="round">
 
-                <!-- NECK -->
-                <path d="M122 196 q28 24 56 0 v18 q-28 22 -56 0 Z" fill="url(#skin)" stroke="#b9744a" stroke-width="3"/>
+                <!-- ===== OLIVE JACKET / SHOULDERS ===== -->
+                <path d="M30 300 V266 Q46 228 98 215 Q126 207 150 209 Q174 207 202 215 Q254 228 270 266 V300 Z"
+                      fill="#5f6b3c"/>
+                <!-- lapel/collar creases -->
+                <path d="M150 212 L116 250 M150 212 L184 250" fill="none" stroke="#414a27" stroke-width="4"/>
 
-                <!-- HEAD -->
-                <path d="M86 132
-                         q-4 -52 64 -54
-                         q68 2 64 54
-                         q3 40 -14 66
-                         q-18 30 -50 30
-                         q-32 0 -50 -30
-                         q-17 -26 -14 -66 Z"
-                      fill="url(#skin)" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="round"/>
+                <!-- ===== BLACK TEE ===== -->
+                <path d="M120 218 Q150 246 180 218 L184 258 Q150 276 116 258 Z" fill="#191919"/>
+                <!-- gold chain -->
+                <path d="M124 224 Q150 252 176 224" fill="none" stroke="#e9c33b" stroke-width="4"/>
 
-                <!-- ears -->
-                <path d="M86 138 q-16 0 -14 18 q2 16 18 12 Z" fill="url(#skin)" stroke="#1a1a1a" stroke-width="5"/>
-                <path d="M214 138 q16 0 14 18 q-2 16 -18 12 Z" fill="url(#skin)" stroke="#1a1a1a" stroke-width="5"/>
+                <!-- ===== NECK ===== -->
+                <path d="M122 196 Q150 220 178 196 V220 Q150 238 122 220 Z" fill="#f2bd92"/>
+                <path d="M122 200 Q150 220 178 200" fill="none" stroke="#d39a6a" stroke-width="3"/>
 
-                <!-- light stubble shading on jaw -->
-                <path d="M104 196 q46 40 92 0 q-10 30 -46 32 q-36 -2 -46 -32 Z"
-                      fill="#cf8a5c" opacity="0.45"/>
+                <!-- ===== EARS ===== -->
+                <path d="M82 148 Q62 144 64 166 Q68 182 86 174 Z" fill="#f2bd92"/>
+                <path d="M218 148 Q238 144 236 166 Q232 182 214 174 Z" fill="#f2bd92"/>
+                <path d="M74 158 Q82 160 84 168" fill="none" stroke="#d39a6a" stroke-width="3"/>
+                <path d="M226 158 Q218 160 216 168" fill="none" stroke="#d39a6a" stroke-width="3"/>
 
-                <!-- sideburn / hair edges peeking under cap -->
-                <path d="M88 120 q-3 22 4 40 q-14 -10 -12 -34 Z" fill="#2a2018"/>
-                <path d="M212 120 q3 22 -4 40 q14 -10 12 -34 Z" fill="#2a2018"/>
+                <!-- ===== SIDEBURNS (dark hair before ears) ===== -->
+                <path d="M86 126 Q82 152 94 172 Q80 162 76 138 Z" fill="#2a2018" stroke="none"/>
+                <path d="M214 126 Q218 152 206 172 Q220 162 224 138 Z" fill="#2a2018" stroke="none"/>
 
-                <!-- EYEBROWS — thick & dark -->
-                <path d="M104 120 q22 -16 44 -4 q-22 -4 -44 8 Z" fill="#2a2018"/>
-                <path d="M196 120 q-22 -16 -44 -4 q22 -4 44 8 Z" fill="#2a2018"/>
+                <!-- ===== HEAD / FACE ===== -->
+                <path d="M78 110 Q72 158 100 206 Q120 246 150 252 Q180 246 200 206 Q228 158 222 110 Q150 96 78 110 Z"
+                      fill="#f2bd92"/>
+                <!-- cel shadow down the right cheek/jaw -->
+                <path d="M198 116 Q220 160 192 208 Q180 232 160 244 Q188 232 206 196 Q224 156 214 114 Z"
+                      fill="#e3a373" stroke="none" opacity="0.65"/>
+                <!-- shadow cast by the brim -->
+                <path d="M92 122 Q150 112 208 122 Q150 134 92 122 Z"
+                      fill="#e3a373" stroke="none" opacity="0.55"/>
 
-                <!-- EYES — happy squint -->
+                <!-- ===== CHEEK BLUSH (from the big grin) ===== -->
+                <ellipse cx="102" cy="186" rx="15" ry="10" fill="#ef9b7a" stroke="none" opacity="0.5"/>
+                <ellipse cx="198" cy="186" rx="15" ry="10" fill="#ef9b7a" stroke="none" opacity="0.5"/>
+
+                <!-- ===== EYEBROWS — thick, dark, raised (joyful) ===== -->
+                <path d="M96 134 Q116 118 142 128 Q118 126 102 140 Z" fill="#2a2018" stroke-width="2"/>
+                <path d="M204 134 Q184 118 158 128 Q182 126 198 140 Z" fill="#2a2018" stroke-width="2"/>
+
+                <!-- ===== EYES — open, bright, happy ===== -->
                 <g class="joe__eyes">
-                  <path d="M110 138 q14 -12 30 -2" fill="none" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round"/>
-                  <path d="M160 136 q16 -10 30 2" fill="none" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round"/>
-                  <circle cx="124" cy="142" r="4.5" fill="#1a1a1a"/>
-                  <circle cx="176" cy="142" r="4.5" fill="#1a1a1a"/>
+                  <!-- left -->
+                  <path d="M102 150 Q122 140 142 150 Q124 162 102 150 Z" fill="#fff" stroke-width="4"/>
+                  <circle cx="122" cy="150" r="6.5" fill="#2a2018" stroke="none"/>
+                  <circle cx="124.5" cy="147.5" r="2.2" fill="#fff" stroke="none"/>
+                  <!-- right -->
+                  <path d="M158 150 Q178 140 198 150 Q180 162 158 150 Z" fill="#fff" stroke-width="4"/>
+                  <circle cx="178" cy="150" r="6.5" fill="#2a2018" stroke="none"/>
+                  <circle cx="180.5" cy="147.5" r="2.2" fill="#fff" stroke="none"/>
                 </g>
 
-                <!-- cheek blush from smiling -->
-                <ellipse cx="108" cy="170" rx="13" ry="9" fill="#e98f6b" opacity="0.45"/>
-                <ellipse cx="192" cy="170" rx="13" ry="9" fill="#e98f6b" opacity="0.45"/>
+                <!-- ===== NOSE ===== -->
+                <path d="M150 156 Q157 174 150 184 Q143 188 136 182"
+                      fill="none" stroke="#d39a6a" stroke-width="4"/>
 
-                <!-- NOSE -->
-                <path d="M150 150 q8 18 -2 30 q-8 4 -12 -2" fill="none" stroke="#b9744a" stroke-width="5" stroke-linecap="round"/>
+                <!-- ===== BIG OPEN GRIN ===== -->
+                <!-- mouth interior -->
+                <path d="M104 196 Q150 204 196 196 Q182 244 150 244 Q118 244 104 196 Z" fill="#7c2230"/>
+                <!-- upper teeth row -->
+                <path d="M110 198 Q150 205 190 198 Q150 218 110 198 Z" fill="#fff" stroke="none"/>
+                <path d="M131 199 V212 M150 200 V214 M169 199 V212"
+                      fill="none" stroke="#d9d9d9" stroke-width="1.6"/>
+                <!-- tongue -->
+                <path d="M126 230 Q150 222 174 230 Q166 244 150 244 Q134 244 126 230 Z"
+                      fill="#e06d72" stroke="none"/>
+                <!-- bold mouth outline over everything -->
+                <path d="M104 196 Q150 204 196 196 Q182 244 150 244 Q118 244 104 196 Z"
+                      fill="none" stroke-width="5.5"/>
+                <!-- grin creases / dimples -->
+                <path d="M96 182 Q96 196 106 206" fill="none" stroke="#d39a6a" stroke-width="3"/>
+                <path d="M204 182 Q204 196 194 206" fill="none" stroke="#d39a6a" stroke-width="3"/>
 
-                <!-- BIG TOOTHY GRIN -->
-                <path d="M114 186 q36 40 72 0 q-36 18 -72 0 Z" fill="#7a1d1d"/>
-                <path d="M116 186 q34 14 68 0 q-34 8 -68 0 Z" fill="#ffffff"/>
-                <path d="M118 187 q32 12 64 0" fill="none" stroke="#d8d8d8" stroke-width="1.5"/>
-                <!-- smile outline -->
-                <path d="M112 184 q38 44 76 0" fill="none" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round"/>
-
-                <!-- ============ THE NAVY CAP with red "R" ============ -->
-                <!-- brim -->
-                <path d="M150 92 q-78 -6 -96 30 q-6 14 8 18 q40 -22 88 -22 q48 0 88 22 q14 -4 8 -18 q-18 -36 -96 -30 Z"
-                      fill="url(#capBrim)" stroke="#0a0f1c" stroke-width="6" stroke-linejoin="round"/>
-                <!-- crown -->
-                <path d="M62 104 q-10 -64 88 -66 q98 2 88 66 q-44 -22 -88 -22 q-44 0 -88 22 Z"
-                      fill="url(#capTop)" stroke="#0a0f1c" stroke-width="6" stroke-linejoin="round"/>
+                <!-- ===================== NAVY CAP ===================== -->
+                <!-- curved bill (sits above the brows) -->
+                <path d="M80 112 Q150 124 220 112 Q228 126 184 132 Q150 137 116 132 Q72 126 80 112 Z"
+                      fill="#16223c"/>
+                <!-- crown / dome -->
+                <path d="M76 114 Q60 50 150 32 Q240 50 224 114 Q150 100 76 114 Z" fill="#24375c"/>
                 <!-- panel seams -->
-                <path d="M150 40 V86" stroke="#0d172b" stroke-width="3" opacity="0.7"/>
-                <path d="M104 46 q14 24 14 44" stroke="#0d172b" stroke-width="3" opacity="0.6" fill="none"/>
-                <path d="M196 46 q-14 24 -14 44" stroke="#0d172b" stroke-width="3" opacity="0.6" fill="none"/>
-                <!-- button -->
-                <circle cx="150" cy="42" r="5" fill="#0d172b"/>
-                <!-- highlight -->
-                <path d="M96 58 q40 -22 96 -10" fill="none" stroke="#3a557f" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
-                <!-- the cursive red R -->
-                <text x="148" y="98" text-anchor="middle"
+                <path d="M150 33 Q150 70 150 102" fill="none" stroke="#16223c" stroke-width="3" opacity="0.7"/>
+                <path d="M106 44 Q118 74 121 100" fill="none" stroke="#16223c" stroke-width="2.5" opacity="0.6"/>
+                <path d="M194 44 Q182 74 179 100" fill="none" stroke="#16223c" stroke-width="2.5" opacity="0.6"/>
+                <!-- top button -->
+                <circle cx="150" cy="34" r="5" fill="#16223c" stroke-width="2"/>
+                <!-- crown highlight -->
+                <path d="M90 74 Q120 50 160 50" fill="none" stroke="#3c5a85" stroke-width="5" opacity="0.7"/>
+                <!-- cursive red R on the front-left panel -->
+                <text x="130" y="98" text-anchor="middle"
                       font-family="'Luckiest Guy','Bangers',cursive"
-                      font-size="68" fill="#e01f1f" stroke="#7a1414" stroke-width="2"
-                      transform="rotate(-10 148 78)">R</text>
+                      font-size="54" fill="#e01f1f" stroke="#8a1414" stroke-width="2"
+                      transform="rotate(-13 130 80)">R</text>
               </g>
             </g>
 
