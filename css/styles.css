@@ -357,6 +357,65 @@ body {
 .timeline__what p { font-size: 0.92rem; }
 .timeline__what em { color: #999; font-style: italic; font-weight: 400; }
 
+/* ---- day-by-day schedule cards ---- */
+.days { display: flex; flex-direction: column; gap: 14px; }
+.day {
+  display: flex; gap: 10px;
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 10px 12px;
+}
+.day__tag {
+  flex: none; align-self: flex-start;
+  background: var(--blue); color: #fff;
+  font-family: "Luckiest Guy", cursive;
+  font-size: 0.82rem; letter-spacing: 0.5px;
+  padding: 6px 8px;
+  border: 2px solid var(--ink); border-radius: 6px;
+  min-width: 52px; text-align: center;
+}
+.day__body { flex: 1; min-width: 0; }
+.day__title {
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  color: var(--red); font-size: 1.15rem; margin-bottom: 8px;
+}
+.day__cols { display: flex; flex-direction: column; gap: 10px; }
+.day__col h4 { font-size: 0.95rem; margin-bottom: 4px; }
+.day__col ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.day__col li { font-size: 0.9rem; padding-left: 15px; position: relative; }
+.day__col li::before { content: "–"; position: absolute; left: 3px; color: var(--blue); font-weight: 700; }
+.day__col em { color: #b06; font-style: italic; font-weight: 400; }
+@media (min-width: 520px) { .day__cols { flex-direction: row; } .day__col { flex: 1; } }
+
+/* ---- crew duties ---- */
+.duties { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.duties li {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  font-size: 0.92rem; padding: 7px 0;
+  border-bottom: 1.5px dashed #d2c9ad;
+}
+.duties li:last-child { border-bottom: none; }
+.duties .who {
+  flex: none;
+  font-family: "Luckiest Guy", cursive;
+  color: var(--blue); font-size: 0.78rem;
+  text-align: right;
+}
+.todo-note {
+  margin-top: 12px;
+  background: #fff7e6;
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 10px 14px;
+}
+.todo-note h3 { font-family: "Luckiest Guy", cursive; font-size: 1.1rem; margin-bottom: 6px; }
+.todo-note ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.todo-note li { font-size: 0.9rem; padding-left: 22px; position: relative; }
+.todo-note li::before { content: "☐"; position: absolute; left: 4px; }
+
 /* =========================================================
    INFO CARDS
    ========================================================= */
