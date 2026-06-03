@@ -43,42 +43,88 @@
 
       <p class="logo__sub">Joe's Bachelor Party <b>·</b> Indianola, WA</p>
 
-      <!-- Foxtrot-style scenery: Mt Rainier over the Puget Sound tide flats -->
-      <div class="scene" role="img" aria-label="Mount Rainier over the Puget Sound tide flats at Indianola">
+      <!-- Indianola: the long pier, tide out, Mt Rainier in the distance -->
+      <div class="scene" role="img" aria-label="The Indianola dock at low tide with Mount Rainier in the distance">
         <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="ij-sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3f9fd6"/><stop offset="1" stop-color="#cfeaf7"/>
+            </linearGradient>
+            <linearGradient id="ij-sea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3a86b8"/><stop offset="1" stop-color="#74bbdd"/>
+            </linearGradient>
+          </defs>
+
           <!-- sky -->
-          <rect x="0" y="0" width="400" height="200" fill="#bfe3f2"/>
-          <!-- sun -->
-          <circle cx="328" cy="48" r="22" fill="#ffd23f" stroke="#1c1c1c" stroke-width="3"/>
-          <g stroke="#ffd23f" stroke-width="4" stroke-linecap="round">
-            <line x1="328" y1="10" x2="328" y2="2"/><line x1="362" y1="20" x2="368" y2="14"/>
-            <line x1="376" y1="48" x2="384" y2="48"/><line x1="362" y1="76" x2="368" y2="82"/>
+          <rect x="0" y="0" width="400" height="200" fill="url(#ij-sky)"/>
+
+          <!-- distant left shoreline -->
+          <path d="M0 96 q34 -6 74 0 q44 -4 92 2 L166 101 L0 101 Z" fill="#33694f" stroke="#1c1c1c" stroke-width="1.5"/>
+          <!-- faraway Seattle skyline -->
+          <g fill="#8893a0">
+            <rect x="150" y="92" width="2" height="7"/><rect x="154" y="88" width="2.5" height="11"/>
+            <rect x="158.5" y="93" width="2" height="6"/><rect x="162" y="90" width="2" height="9"/>
+            <rect x="166" y="94" width="2" height="5"/>
           </g>
-          <!-- distant evergreen shoreline -->
-          <path d="M0 118 q20 -16 40 0 q18 -14 38 2 q22 -16 44 0 q20 -12 40 2 q24 -16 46 0 q22 -12 44 2 q20 -14 42 0 q18 -10 22 4 V140 H0 Z"
-                fill="#3f7d4f" stroke="#1c1c1c" stroke-width="3"/>
-          <!-- MT RAINIER -->
-          <path d="M118 120 L182 36 q6 -8 12 0 L262 120 Z" fill="#f2f4f8" stroke="#1c1c1c" stroke-width="3.5" stroke-linejoin="round"/>
-          <!-- snow ridges / shading -->
-          <path d="M150 84 l16 14 l14 -12 l16 16 l14 -10" fill="none" stroke="#9fb3c9" stroke-width="3" stroke-linecap="round"/>
-          <path d="M188 40 L150 120 H160 L196 46 Z" fill="#dfe6ef"/>
+          <!-- MT RAINIER, distant -->
+          <path d="M206 99 L250 69 q3 -4 6 0 L300 99 Z" fill="#eef5fa" stroke="#3a4b59" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M234 83 l8 7 l7 -6 l8 8 l6 -5" fill="none" stroke="#bcd0e0" stroke-width="2" stroke-linecap="round"/>
+          <!-- right headland / island -->
+          <path d="M332 99 q22 -17 47 -14 q15 2 21 6 L400 99 Z" fill="#2c624a" stroke="#1c1c1c" stroke-width="1.5"/>
+
           <!-- water -->
-          <rect x="0" y="120" width="400" height="80" fill="#5bb6dd"/>
-          <!-- mountain reflection -->
-          <path d="M118 120 L190 168 L262 120 Z" fill="#7fc8e6" opacity="0.7"/>
-          <!-- tide-flat ripples -->
-          <g stroke="#2b8fc0" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8">
-            <path d="M20 150 q14 -6 28 0 t28 0"/>
-            <path d="M250 158 q14 -6 28 0 t28 0"/>
-            <path d="M120 176 q14 -6 28 0 t28 0"/>
+          <rect x="0" y="98" width="400" height="62" fill="url(#ij-sea)"/>
+          <g stroke="#c7e6f1" stroke-width="1.5" stroke-linecap="round" opacity="0.6" fill="none">
+            <path d="M215 122 q10 -4 20 0 t20 0"/>
+            <path d="M305 132 q10 -4 20 0 t20 0"/>
           </g>
-          <!-- wet tide flat in foreground -->
-          <path d="M0 182 q60 -10 120 0 t160 0 t120 0 V200 H0 Z" fill="#c8a86a" stroke="#1c1c1c" stroke-width="3"/>
-          <!-- little dock -->
-          <g stroke="#1c1c1c" stroke-width="3">
-            <rect x="40" y="150" width="70" height="8" fill="#9a6b3f"/>
-            <line x1="48" y1="158" x2="48" y2="186"/>
-            <line x1="102" y1="158" x2="102" y2="186"/>
+          <!-- tiny sailboat -->
+          <g stroke="#1c1c1c" stroke-width="1.1">
+            <path d="M340 117 l0 -12 l8 12 z" fill="#ffffff"/>
+            <path d="M335 117 h13 l-2 4 h-9 z" fill="#e7392e"/>
+          </g>
+
+          <!-- THE LONG DOCK receding toward the mountain -->
+          <path d="M14 135 L298 104" stroke="#1c1c1c" stroke-width="8" stroke-linecap="round"/>
+          <path d="M14 135 L298 104" stroke="#9a6b3f" stroke-width="4.4" stroke-linecap="round"/>
+          <g stroke="#2e2118" stroke-width="2.3" stroke-linecap="round">
+            <line x1="26" y1="134" x2="26" y2="153"/>
+            <line x1="54" y1="131" x2="54" y2="149"/>
+            <line x1="82" y1="128" x2="82" y2="145"/>
+            <line x1="110" y1="125" x2="110" y2="141"/>
+            <line x1="138" y1="122" x2="138" y2="137"/>
+            <line x1="166" y1="120" x2="166" y2="134"/>
+            <line x1="194" y1="117" x2="194" y2="130"/>
+            <line x1="222" y1="114" x2="222" y2="126"/>
+            <line x1="250" y1="111" x2="250" y2="123"/>
+            <line x1="278" y1="108" x2="278" y2="119"/>
+          </g>
+
+          <!-- exposed tide flats in the foreground -->
+          <path d="M0 150 q80 -12 160 -4 q120 7 240 -3 L400 200 L0 200 Z" fill="#cbb37b" stroke="#1c1c1c" stroke-width="2"/>
+          <g fill="#67add2" opacity="0.85" stroke="#1c1c1c" stroke-width="0.8">
+            <path d="M120 176 q42 -10 92 -2 q-32 11 -92 2 z"/>
+            <path d="M248 189 q30 -8 70 -1 q-30 9 -70 1 z"/>
+          </g>
+          <g fill="#9c8554">
+            <circle cx="60" cy="181" r="1.4"/><circle cx="92" cy="191" r="1.4"/><circle cx="150" cy="186" r="1.4"/>
+            <circle cx="320" cy="178" r="1.4"/><circle cx="352" cy="193" r="1.4"/>
+          </g>
+
+          <!-- left lawn -->
+          <path d="M0 158 q44 6 74 26 q-22 9 -74 11 Z" fill="#5aa24a" stroke="#1c1c1c" stroke-width="2"/>
+
+          <!-- evergreen at far left -->
+          <path d="M12 44 l18 0 l-7 7 l9 0 l-8 8 l10 0 l-10 9 l11 0 l-13 10 l-1 0 Z" fill="#2f6d44" stroke="#1c1c1c" stroke-width="1.5"/>
+
+          <!-- the bare leaning tree -->
+          <g stroke="#3f2c1d" stroke-linecap="round" fill="none">
+            <path d="M60 178 C57 142 62 110 58 66" stroke-width="5"/>
+            <path d="M58 92 C50 84 44 80 37 77" stroke-width="2.4"/>
+            <path d="M58 82 C67 75 75 71 84 69" stroke-width="2.4"/>
+            <path d="M58 72 C54 64 52 58 50 52" stroke-width="2.1"/>
+            <path d="M58 72 C64 64 69 59 73 54" stroke-width="2.1"/>
+            <path d="M58 62 C57 56 57 52 59 46" stroke-width="1.9"/>
           </g>
         </svg>
       </div>

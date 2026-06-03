@@ -43,4 +43,23 @@
       t.classList.add("is-active");
     });
   });
+
+  /* ---- keep the bottom bar glued to the VISIBLE viewport bottom ----
+     iOS Safari positions `fixed` elements against the layout viewport, so
+     when the URL bar shrinks/expands a gap can open under the tab bar.
+     The VisualViewport API tells us where the real visible bottom is. */
+  const tabbar = document.querySelector(".tabbar");
+  const vv = window.visualViewport;
+  if (tabbar && vv) {
+    const pin = () => {
+      // how far the visible bottom sits above the layout bottom
+      const delta = window.innerHeight - (vv.height + vv.offsetTop);
+      tabbar.style.transform = `translateY(${-delta}px)`;
+    };
+    vv.addEventListener("resize", pin);
+    vv.addEventListener("scroll", pin);
+    window.addEventListener("scroll", pin, { passive: true });
+    window.addEventListener("orientationchange", () => setTimeout(pin, 200));
+    pin();
+  }
 })();

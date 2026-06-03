@@ -155,6 +155,12 @@
     photos.forEach((p, i) => {
       const slide = document.createElement("div");
       slide.className = "slide" + (i === index ? " is-active" : "");
+
+      const bg = document.createElement("div");
+      bg.className = "slide__bg";
+      bg.style.backgroundImage = `url("${p.url}")`;
+      slide.appendChild(bg);
+
       const img = document.createElement("img");
       img.loading = "lazy";
       img.alt = "Bachelor party photo";
