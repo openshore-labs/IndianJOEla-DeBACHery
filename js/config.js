@@ -27,5 +27,5 @@ window.INDIANJOELA_CONFIG = {
   // When true, an "Edit copy" button appears (host-code gated) so copy can be
   // edited right on the site. Flip to false to lock edits. Saved edits persist
   // either way (stored in Supabase).
-  EDIT_MODE: true,
+  EDIT_MODE: false,
 };
