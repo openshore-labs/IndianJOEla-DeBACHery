@@ -28,8 +28,17 @@
   const nextBtn  = document.getElementById("nextBtn");
   const fileInput = document.getElementById("fileInput");
   const uploadBtn = document.querySelector(".upload-btn");
+  const slideshow = document.getElementById("slideshow");
 
-  let photos = [];      // [{url}]
+  // host-gated delete button (created once, shown only when photos exist)
+  const delBtn = document.createElement("button");
+  delBtn.className = "slideshow__del";
+  delBtn.setAttribute("aria-label", "Delete this photo");
+  delBtn.textContent = "🗑";
+  delBtn.style.display = "none";
+  slideshow.appendChild(delBtn);
+
+  let photos = [];      // [{url, name?}]
   let index = 0;
   let timer = null;
 
@@ -83,6 +92,7 @@
         return (data || [])
           .filter((f) => f.name && !f.name.startsWith("."))
           .map((f) => ({
+            name: f.name,
             url: sb.storage.from(BUCKET).getPublicUrl(f.name).data.publicUrl,
           }));
       } catch (e) {
@@ -107,7 +117,7 @@
         .from(BUCKET)
         .upload(name, blob, { contentType: "image/jpeg", upsert: false });
       if (error) throw error;
-      return { url: sb.storage.from(BUCKET).getPublicUrl(name).data.publicUrl };
+      return { name, url: sb.storage.from(BUCKET).getPublicUrl(name).data.publicUrl };
     }
     // local fallback
     const dataURL = await fileToDataURL(file);
@@ -136,9 +146,11 @@
       stage.appendChild(empty);
       counter.textContent = "";
       prevBtn.style.display = nextBtn.style.display = "none";
+      delBtn.style.display = "none";
       stopAuto();
       return;
     }
+    delBtn.style.display = "block";
 
     photos.forEach((p, i) => {
       const slide = document.createElement("div");
@@ -210,10 +222,46 @@
     }
   }
 
+  /* ---------------- delete (host-gated) ---------------- */
+
+  async function deleteCurrent() {
+    const photo = photos[index];
+    if (!photo) return;
+
+    const want = (cfg.HOST_CODE || "").trim();
+    const got = window.prompt("Enter the host code to remove this photo:");
+    if (got === null) return;                 // cancelled
+    if (want && got.trim() !== want) {
+      toast("Wrong code — photo kept.");
+      return;
+    }
+
+    stopAuto();
+    try {
+      if (sb && photo.name) {
+        const { error } = await sb.storage.from(BUCKET).remove([photo.name]);
+        if (error) throw error;
+      } else {
+        const local = JSON.parse(localStorage.getItem(LS_KEY) || "[]");
+        const at = local.findIndex((p) => p.url === photo.url);
+        if (at > -1) local.splice(at, 1);
+        localStorage.setItem(LS_KEY, JSON.stringify(local));
+      }
+      photos.splice(index, 1);
+      if (index >= photos.length) index = Math.max(0, photos.length - 1);
+      render();
+      toast("Photo removed.");
+    } catch (e) {
+      console.error(e);
+      toast("Couldn't delete that one — try again.");
+    }
+  }
+
+  delBtn.addEventListener("click", (e) => { e.stopPropagation(); deleteCurrent(); });
+
   /* ---------------- swipe (mobile) ---------------- */
 
   let touchX = null;
-  const slideshow = document.getElementById("slideshow");
   slideshow.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
   slideshow.addEventListener("touchend", (e) => {
     if (touchX === null) return;

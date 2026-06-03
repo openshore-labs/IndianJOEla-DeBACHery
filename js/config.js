@@ -21,4 +21,7 @@ window.INDIANJOELA_CONFIG = {
   // Supabase "publishable" key — safe to expose in front-end code.
   SUPABASE_ANON_KEY: "sb_publishable_MCwDeRQnvY4kk6KjvcqjGw_AMQQHLZJ",
   BUCKET: "photos",
+  // Secret word required to delete a photo from the site. Change this to
+  // whatever you like — only people who know it can remove photos.
+  HOST_CODE: "rainier",
 };
