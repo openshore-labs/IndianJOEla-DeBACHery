@@ -41,7 +41,7 @@
         <span class="logo__main">Indian<span class="logo__joe">JOE</span>la</span>
       </h1>
 
-      <p class="logo__sub">Joe's <b>DeBACHerous</b> Weekend</p>
+      <p class="logo__sub" data-edit="byline">Joe's <b>DeBACHerous</b> Weekend</p>
 
       <!-- Indianola: the long pier, tide out, Mt Rainier in the distance -->
       <div class="scene" role="img" aria-label="The Indianola dock at low tide with Mount Rainier in the distance">
@@ -163,6 +163,17 @@
       </div>
     </header>
 
+    <!-- ============================ WEATHER WIDGET ============================ -->
+    <a class="wx" id="wx-widget" href="forecast.html" aria-label="Weather forecast — tap for the hourly breakdown">
+      <div class="wx__head"><span>⛅ The Forecast</span><span class="wx__loc">Indianola · tap for hourly ›</span></div>
+      <div class="wx__row">
+        <div class="wx__day"><span class="wx__dow">Thu</span><span class="wx__date">—</span><span class="wx__icon">·</span><span class="wx__temp"><small>…</small></span></div>
+        <div class="wx__day"><span class="wx__dow">Fri</span><span class="wx__date">—</span><span class="wx__icon">·</span><span class="wx__temp"><small>…</small></span></div>
+        <div class="wx__day"><span class="wx__dow">Sat</span><span class="wx__date">—</span><span class="wx__icon">·</span><span class="wx__temp"><small>…</small></span></div>
+        <div class="wx__day"><span class="wx__dow">Sun</span><span class="wx__date">—</span><span class="wx__icon">·</span><span class="wx__temp"><small>…</small></span></div>
+      </div>
+    </a>
+
     <!-- ============================ PHOTOS ============================ -->
     <section class="panel" id="photos">
       <div class="panel__title">
@@ -203,7 +214,7 @@
         <h2>The Game Plan</h2>
       </div>
 
-      <div class="days">
+      <div class="days" data-edit="schedule">
         <div class="day">
           <span class="day__tag">THU</span>
           <div class="day__body">
@@ -318,7 +329,7 @@
         <h2>Need-to-Know</h2>
       </div>
 
-      <div class="info-grid">
+      <div class="info-grid" data-edit="info">
         <div class="info-card info-card--know">
           <h3>📋 The Lowdown</h3>
           <ul>
@@ -346,79 +357,14 @@
       </div>
     </section>
 
-    <!-- ============================ CREW & PROVISIONS ============================ -->
-    <section class="panel" id="crew">
-      <div class="panel__title">
-        <span class="panel__num">4</span>
-        <h2>The Crew</h2>
-      </div>
-
-      <div class="info-card info-card--know">
-        <h3>🤝 Who's Got What</h3>
-        <ul class="duties">
-          <li><span>Beer/wine — first round</span><span class="who">Joe / Thu crew</span></li>
-          <li><span>Friday snacks</span><span class="who">Tommy</span></li>
-          <li><span>Drinking-game supplies</span><span class="who">Tommy</span></li>
-          <li><span>Friday Manhattans</span><span class="who">Jack</span></li>
-          <li><span>Tequila toast</span><span class="who">Jack</span></li>
-          <li><span>Saturday breakfast</span><span class="who">Jack</span></li>
-          <li><span>Saturday lunch</span><span class="who">Andrew</span></li>
-          <li><span>Casino shuttles</span><span class="who">Andrew</span></li>
-          <li><span>Bagel bar</span><span class="who">Jack</span></li>
-          <li><span>Speaker</span><span class="who">Andrew</span></li>
-          <li><span>Poulsbo itinerary</span><span class="who">Tommy &amp; Jack</span></li>
-          <li><span>Wildcard — slip 'n slide</span><span class="who">Jack</span></li>
-          <li><span>Wildcard — softball</span><span class="who">Joe &amp; Jack</span></li>
-        </ul>
-      </div>
-
-      <div class="info-grid" style="margin-top:14px;">
-        <div class="info-card info-card--bring">
-          <h3>🛒 Thursday Haul</h3>
-          <ul>
-            <li>Hot dogs, buns &amp; condiments</li>
-            <li>Weenie roasters</li>
-            <li>S'mores supplies</li>
-            <li>Ruffles, chips, French onion dip, sour cream</li>
-            <li>Salsa &amp; guac</li>
-            <li>Frozen pizzas (late night)</li>
-            <li>Popcorn</li>
-            <li>Solo cups &amp; paper plates</li>
-            <li>Beer/wine + whiskey</li>
-          </ul>
-        </div>
-        <div class="info-card info-card--bring">
-          <h3>🛒 Saturday Haul</h3>
-          <ul>
-            <li>Fruit &amp; eggs</li>
-            <li>Apple sausage</li>
-            <li>Mascarpone</li>
-            <li>Lemons &amp; rosemary</li>
-            <li>Pillsbury cinnamon rolls <em>(Ben makes at the other house &amp; brings over)</em></li>
-            <li>Tequila</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="todo-note">
-        <h3>📌 Still to Lock Down</h3>
-        <ul>
-          <li>Place the Little Store sandwich order</li>
-          <li>Confirm the casino shuttle</li>
-          <li>Softball / wiffle-ball supplies</li>
-          <li>Remind everyone: bring shoes ready to get wet &amp; sacrificed — Saturday's a sandy one</li>
-        </ul>
-      </div>
-    </section>
-
     <!-- ============================ GETTING THERE ============================ -->
     <section class="panel" id="map">
       <div class="panel__title">
-        <span class="panel__num">5</span>
+        <span class="panel__num">4</span>
         <h2>Getting There</h2>
       </div>
 
-      <div class="route" data-edit>
+      <div class="route" data-edit="route">
         <p class="route__lead">Indianola sits on the Kitsap Peninsula across Puget Sound from Seattle. Two easy ways in:</p>
 
         <div class="route__step">
@@ -461,7 +407,6 @@
     <a href="#photos" class="tab" data-tab="photos"><span>📷</span>Photos</a>
     <a href="#schedule" class="tab" data-tab="schedule"><span>📅</span>Plan</a>
     <a href="#info" class="tab" data-tab="info"><span>🎒</span>Info</a>
-    <a href="#crew" class="tab" data-tab="crew"><span>🍻</span>Crew</a>
     <a href="#map" class="tab" data-tab="map"><span>🧭</span>Map</a>
   </nav>
 
@@ -471,6 +416,8 @@
   <script src="js/config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/slideshow.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/edits.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

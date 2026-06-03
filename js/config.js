@@ -24,4 +24,8 @@ window.INDIANJOELA_CONFIG = {
   // Secret word required to delete a photo from the site. Change this to
   // whatever you like — only people who know it can remove photos.
   HOST_CODE: "rainier",
+  // When true, an "Edit copy" button appears (host-code gated) so copy can be
+  // edited right on the site. Flip to false to lock edits. Saved edits persist
+  // either way (stored in Supabase).
+  EDIT_MODE: true,
 };

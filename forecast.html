@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1c1c1c" />
+  <title>Hourly Forecast — IndianJOEla</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="fc-body">
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <header class="fc-top">
+    <a class="fc-back" href="index.html">‹ Back</a>
+    <div class="fc-title">⛅ Indianola Forecast</div>
+  </header>
+
+  <main class="fc-main">
+    <div id="wx-hourly"><div class="fc-msg">Loading the forecast… 🌊</div></div>
+    <p class="fc-msg" style="font-size:0.78rem;opacity:0.6;padding:6px 0 0;">
+      Forecast by Open-Meteo · hourly detail unlocks ~2 weeks out.
+    </p>
+  </main>
+
+  <script src="js/weather.js"></script>
+</body>
+</html>
