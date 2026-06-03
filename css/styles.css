@@ -476,6 +476,38 @@ body {
 .route__note { font-size: 0.85rem; opacity: 0.85; }
 .route__note em, .info-card em, [data-edit] em { color: #b06; font-weight: 400; }
 
+/* ---- trip planner wizard ---- */
+.trip { margin-top: 6px; }
+.trip__q {
+  font-family: "Luckiest Guy", "Bangers", cursive;
+  font-size: 1.3rem; color: var(--ink); margin-bottom: 6px;
+}
+.trip__sub { font-size: 0.92rem; margin-bottom: 14px; opacity: 0.85; }
+.trip__opts { display: flex; flex-direction: column; gap: 10px; }
+.trip-btn {
+  display: block; width: 100%; text-align: left;
+  background: #fff; border: 3px solid var(--ink); border-radius: 12px;
+  box-shadow: 3px 3px 0 var(--ink);
+  font-family: "Comic Neue", sans-serif; font-weight: 700; font-size: 1.1rem;
+  padding: 14px 16px; cursor: pointer; color: var(--ink);
+  transition: transform 0.06s, box-shadow 0.06s, background 0.06s;
+}
+.trip-btn:active { transform: translate(3px, 3px); box-shadow: none; background: var(--yellow); }
+.trip__back {
+  margin-top: 14px; background: none; border: none; cursor: pointer;
+  font-family: "Luckiest Guy", cursive; color: var(--blue); font-size: 0.95rem; padding: 4px 0;
+}
+.trip__steps { margin: 0 0 14px 0; padding-left: 24px; display: flex; flex-direction: column; gap: 8px; }
+.trip__steps li { font-size: 0.98rem; padding-left: 4px; }
+.trip__steps li::marker { font-family: "Luckiest Guy", cursive; color: var(--red); }
+.trip__house {
+  background: #eaf3ff; border: 3px solid var(--ink); border-radius: 8px;
+  box-shadow: 3px 3px 0 var(--ink); padding: 10px 12px; font-size: 0.95rem; margin-bottom: 14px;
+}
+.trip__house b { color: var(--blue); }
+.trip__actions { display: flex; flex-direction: column; gap: 10px; }
+.map-btn--alt { background: var(--green); }
+
 /* =========================================================
    FOOTER
    ========================================================= */

@@ -364,36 +364,8 @@
         <h2>Getting There</h2>
       </div>
 
-      <div class="route" data-edit="route">
-        <p class="route__lead">Indianola sits on the Kitsap Peninsula across Puget Sound from Seattle. Two easy ways in:</p>
-
-        <div class="route__step">
-          <span class="route__badge">⛴️</span>
-          <div>
-            <b>Ferry via Bainbridge</b>
-            <p>Seattle → Bainbridge Island ferry (~35 min), then ~25 min drive north to Indianola.</p>
-          </div>
-        </div>
-        <div class="route__step">
-          <span class="route__badge">⛴️</span>
-          <div>
-            <b>Ferry via Kingston</b>
-            <p>Edmonds → Kingston ferry (~30 min), then ~15 min drive south.</p>
-          </div>
-        </div>
-        <div class="route__step">
-          <span class="route__badge">🚗</span>
-          <div>
-            <b>All the way around</b>
-            <p>Drive south through Tacoma + over the Narrows (~2 hr, no ferry). Good backup at odd hours.</p>
-          </div>
-        </div>
-
-        <a class="map-btn" id="mapBtn" href="https://maps.google.com/?q=Indianola,+WA" target="_blank" rel="noopener">
-          🗺️ Open in Maps
-        </a>
-        <p class="route__note">Tip: ferries fill up on weekends — check sailing times &amp; build in a buffer. <em>[edit details]</em></p>
-      </div>
+      <p class="route__lead">Most of us are flying in — no car needed. Tap through to get your route to the house. 👇</p>
+      <div id="trip" class="trip"></div>
     </section>
 
     <footer class="footer">
@@ -417,6 +389,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/slideshow.js"></script>
   <script src="js/weather.js"></script>
+  <script src="js/trip.js"></script>
   <script src="js/edits.js"></script>
   <script src="js/main.js"></script>
 </body>
