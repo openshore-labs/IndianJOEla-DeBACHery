@@ -30,8 +30,8 @@
         {
           label: "🚆 Link Light Rail",
           steps: [
-            "Take the Link light rail from SeaTac to downtown Seattle (~40 min).",
-            "Walk to Colman Dock / Pier 52.",
+            "Take the Link light rail (1 Line) from SeaTac toward Seattle and get OFF AT PIONEER SQUARE STATION (~40 min). It's the closest stop to the ferry.",
+            "From Pioneer Square Station, walk ~5–7 min downhill to Colman Dock / Pier 52 (the Seattle ferry terminal).",
           ],
           next: "walkon_bainbridge",
         },
@@ -72,7 +72,7 @@
       final: true,
       steps: [
         "From Kingston, grab an Uber for the ~15 min drive south to Indianola.",
-        "Heads up: Ubers in Kingston are hit-or-miss — if you can't snag one, text Jack and we'll sort you a ride.",
+        'Heads up: Ubers in Kingston are hit-or-miss — if you can\'t snag one, text <a href="sms:+12063342944">Jack (206-334-2944)</a> and we\'ll sort you a ride.',
       ],
     },
   };
@@ -149,8 +149,9 @@
       el("p", "trip__house", `🏠 <b>The house:</b> ${HOUSE}`)
     );
 
-    // SMS body
-    const lines = itinerary.map((s, i) => `${i + 1}. ${s}`).join("\n");
+    // SMS body (strip any HTML so links become plain text)
+    const strip = (s) => { const d = el("div", null, s); return d.textContent; };
+    const lines = itinerary.map((s, i) => `${i + 1}. ${strip(s)}`).join("\n");
     const body =
       `IndianJOEla — your route to the house 🏖️\n\n${lines}\n\n` +
       `🏠 House: ${HOUSE}\n📍 Pin: ${HOUSE_MAP}`;
