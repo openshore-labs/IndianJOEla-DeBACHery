@@ -10,7 +10,7 @@
 
   // *** EVENT THURSDAY — set this to the real date (YYYY-MM-DD). ***
   // The widget shows this Thu + the next 3 days (Fri/Sat/Sun).
-  const EVENT_THURSDAY = "2026-07-16";
+  const EVENT_THURSDAY = "2026-06-04";
 
   // WMO weather code -> [emoji, label]
   const WMO = {
