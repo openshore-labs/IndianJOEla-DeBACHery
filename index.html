@@ -48,83 +48,118 @@
         <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="ij-sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#3f9fd6"/><stop offset="1" stop-color="#cfeaf7"/>
+              <stop offset="0" stop-color="#3f9fd6"/><stop offset="0.7" stop-color="#a9ddf1"/><stop offset="1" stop-color="#dcf1fa"/>
             </linearGradient>
             <linearGradient id="ij-sea" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#3a86b8"/><stop offset="1" stop-color="#74bbdd"/>
+              <stop offset="0" stop-color="#2f7fb0"/><stop offset="1" stop-color="#79bedd"/>
             </linearGradient>
           </defs>
 
           <!-- sky -->
           <rect x="0" y="0" width="400" height="200" fill="url(#ij-sky)"/>
 
-          <!-- distant left shoreline -->
-          <path d="M0 96 q34 -6 74 0 q44 -4 92 2 L166 101 L0 101 Z" fill="#33694f" stroke="#1c1c1c" stroke-width="1.5"/>
-          <!-- faraway Seattle skyline -->
-          <g fill="#8893a0">
-            <rect x="150" y="92" width="2" height="7"/><rect x="154" y="88" width="2.5" height="11"/>
-            <rect x="158.5" y="93" width="2" height="6"/><rect x="162" y="90" width="2" height="9"/>
-            <rect x="166" y="94" width="2" height="5"/>
+          <!-- soft clouds -->
+          <g fill="#ffffff" opacity="0.88">
+            <ellipse cx="92" cy="32" rx="21" ry="8"/><ellipse cx="77" cy="36" rx="12" ry="7"/><ellipse cx="110" cy="36" rx="13" ry="6"/>
+            <ellipse cx="320" cy="24" rx="17" ry="7"/><ellipse cx="334" cy="28" rx="11" ry="6"/>
           </g>
-          <!-- MT RAINIER, distant -->
-          <path d="M206 99 L250 69 q3 -4 6 0 L300 99 Z" fill="#eef5fa" stroke="#3a4b59" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M234 83 l8 7 l7 -6 l8 8 l6 -5" fill="none" stroke="#bcd0e0" stroke-width="2" stroke-linecap="round"/>
-          <!-- right headland / island -->
-          <path d="M332 99 q22 -17 47 -14 q15 2 21 6 L400 99 Z" fill="#2c624a" stroke="#1c1c1c" stroke-width="1.5"/>
+
+          <!-- faint foothills behind the mountain -->
+          <path d="M160 96 Q215 80 252 82 Q300 84 332 96 Z" fill="#9cc6e0" opacity="0.65"/>
+
+          <!-- MT RAINIER -->
+          <path d="M204 96 L244 57 Q250 51 256 57 L296 96 Z" fill="#f5f9fc" stroke="#33485a" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M250 54 L250 96 L296 96 Z" fill="#d6e2ec"/>
+          <path d="M222 82 l9 8 l8 -6 l9 8 l8 -6" fill="none" stroke="#bacedd" stroke-width="2" stroke-linecap="round"/>
+          <!-- Little Tahoma -->
+          <path d="M288 96 L300 79 L313 96 Z" fill="#eef5fa" stroke="#33485a" stroke-width="1.6" stroke-linejoin="round"/>
+
+          <!-- distant treeline that grounds the mountain -->
+          <g fill="#2b5b44">
+            <rect x="0" y="95" width="400" height="5"/>
+            <path d="M28 95 l4 -6 l4 6 z M72 95 l4 -7 l4 7 z M120 95 l4 -6 l4 6 z M168 95 l4 -7 l4 7 z
+                     M214 95 l4 -6 l4 6 z M262 95 l4 -7 l4 7 z M312 95 l4 -6 l4 6 z M356 95 l4 -7 l4 7 z"/>
+          </g>
+
+          <!-- framing forested headlands -->
+          <path d="M0 99 Q26 76 64 84 Q90 89 108 99 Z" fill="#2f6a4f" stroke="#1c1c1c" stroke-width="1.5"/>
+          <path d="M400 99 Q366 74 328 84 Q306 89 302 99 Z" fill="#2f6a4f" stroke="#1c1c1c" stroke-width="1.5"/>
 
           <!-- water -->
-          <rect x="0" y="98" width="400" height="62" fill="url(#ij-sea)"/>
-          <g stroke="#c7e6f1" stroke-width="1.5" stroke-linecap="round" opacity="0.6" fill="none">
-            <path d="M215 122 q10 -4 20 0 t20 0"/>
-            <path d="M305 132 q10 -4 20 0 t20 0"/>
+          <rect x="0" y="98" width="400" height="64" fill="url(#ij-sea)"/>
+          <path d="M238 98 L250 116 L262 98 Z" fill="#ffffff" opacity="0.16"/>
+          <g stroke="#cdeaf4" stroke-width="1.5" stroke-linecap="round" opacity="0.5" fill="none">
+            <path d="M150 120 q10 -4 20 0 t20 0"/><path d="M300 128 q10 -4 20 0 t20 0"/><path d="M205 134 q10 -4 20 0 t20 0"/>
           </g>
-          <!-- tiny sailboat -->
-          <g stroke="#1c1c1c" stroke-width="1.1">
-            <path d="M340 117 l0 -12 l8 12 z" fill="#ffffff"/>
-            <path d="M335 117 h13 l-2 4 h-9 z" fill="#e7392e"/>
+          <!-- sailboat -->
+          <g stroke="#1c1c1c" stroke-width="1.1" stroke-linejoin="round">
+            <path d="M346 115 l0 -13 l9 13 z" fill="#ffffff"/>
+            <path d="M345 115 l0 -10 l-6 10 z" fill="#eaf3f9"/>
+            <path d="M338 115 h16 l-3 5 h-10 z" fill="#e7392e"/>
           </g>
 
-          <!-- THE LONG DOCK receding toward the mountain -->
-          <path d="M14 135 L298 104" stroke="#1c1c1c" stroke-width="8" stroke-linecap="round"/>
-          <path d="M14 135 L298 104" stroke="#9a6b3f" stroke-width="4.4" stroke-linecap="round"/>
+          <!-- THE LONG PIER -->
+          <path d="M10 137 L300 103" stroke="#1c1c1c" stroke-width="8.5" stroke-linecap="round"/>
+          <path d="M10 137 L300 103" stroke="#9a6b3f" stroke-width="5" stroke-linecap="round"/>
+          <path d="M10 135 L300 102" stroke="#b6824e" stroke-width="1.3" stroke-linecap="round"/>
+          <!-- railing -->
+          <path d="M12 131 L299 100" stroke="#3a2a1c" stroke-width="1.1"/>
+          <g stroke="#3a2a1c" stroke-width="1">
+            <line x1="40" y1="134" x2="42" y2="128"/><line x1="96" y1="128" x2="98" y2="122"/>
+            <line x1="152" y1="123" x2="154" y2="117"/><line x1="208" y1="117" x2="210" y2="111"/>
+            <line x1="262" y1="112" x2="264" y2="106"/>
+          </g>
+          <!-- pilings -->
           <g stroke="#2e2118" stroke-width="2.3" stroke-linecap="round">
-            <line x1="26" y1="134" x2="26" y2="153"/>
-            <line x1="54" y1="131" x2="54" y2="149"/>
-            <line x1="82" y1="128" x2="82" y2="145"/>
-            <line x1="110" y1="125" x2="110" y2="141"/>
-            <line x1="138" y1="122" x2="138" y2="137"/>
-            <line x1="166" y1="120" x2="166" y2="134"/>
-            <line x1="194" y1="117" x2="194" y2="130"/>
-            <line x1="222" y1="114" x2="222" y2="126"/>
-            <line x1="250" y1="111" x2="250" y2="123"/>
-            <line x1="278" y1="108" x2="278" y2="119"/>
+            <line x1="24" y1="136" x2="24" y2="155"/><line x1="52" y1="133" x2="52" y2="151"/>
+            <line x1="80" y1="130" x2="80" y2="147"/><line x1="108" y1="127" x2="108" y2="143"/>
+            <line x1="136" y1="124" x2="136" y2="139"/><line x1="164" y1="121" x2="164" y2="135"/>
+            <line x1="192" y1="118" x2="192" y2="131"/><line x1="220" y1="115" x2="220" y2="127"/>
+            <line x1="248" y1="112" x2="248" y2="123"/><line x1="276" y1="109" x2="276" y2="119"/>
           </g>
 
-          <!-- exposed tide flats in the foreground -->
-          <path d="M0 150 q80 -12 160 -4 q120 7 240 -3 L400 200 L0 200 Z" fill="#cbb37b" stroke="#1c1c1c" stroke-width="2"/>
-          <g fill="#67add2" opacity="0.85" stroke="#1c1c1c" stroke-width="0.8">
-            <path d="M120 176 q42 -10 92 -2 q-32 11 -92 2 z"/>
-            <path d="M248 189 q30 -8 70 -1 q-30 9 -70 1 z"/>
+          <!-- exposed tide flats -->
+          <path d="M0 150 q80 -12 162 -4 q118 7 238 -3 L400 200 L0 200 Z" fill="#cdb47b" stroke="#1c1c1c" stroke-width="2"/>
+          <path d="M0 150 q80 -12 162 -4 q118 7 238 -3" fill="none" stroke="#e3ce9d" stroke-width="2" opacity="0.55"/>
+          <!-- tide pools -->
+          <g stroke="#1c1c1c" stroke-width="1">
+            <ellipse cx="150" cy="177" rx="50" ry="9" fill="#6fb2d6"/>
+            <ellipse cx="304" cy="191" rx="42" ry="8" fill="#6fb2d6"/>
+            <ellipse cx="66" cy="193" rx="26" ry="6" fill="#6fb2d6"/>
           </g>
-          <g fill="#9c8554">
-            <circle cx="60" cy="181" r="1.4"/><circle cx="92" cy="191" r="1.4"/><circle cx="150" cy="186" r="1.4"/>
-            <circle cx="320" cy="178" r="1.4"/><circle cx="352" cy="193" r="1.4"/>
+          <g stroke="#c8e6f2" stroke-width="1" opacity="0.7" fill="none">
+            <path d="M128 176 q14 -3 28 0"/><path d="M288 190 q14 -3 28 0"/>
           </g>
+          <!-- rocks -->
+          <g stroke="#1c1c1c" stroke-width="1">
+            <ellipse cx="232" cy="184" rx="6" ry="3.5" fill="#8c8275"/>
+            <ellipse cx="244" cy="187" rx="4" ry="2.4" fill="#9c9286"/>
+            <ellipse cx="206" cy="197" rx="5" ry="3" fill="#8c8275"/>
+          </g>
+          <g fill="#a8915d"><circle cx="340" cy="172" r="1.3"/><circle cx="120" cy="166" r="1.3"/><circle cx="372" cy="195" r="1.3"/></g>
 
-          <!-- left lawn -->
-          <path d="M0 158 q44 6 74 26 q-22 9 -74 11 Z" fill="#5aa24a" stroke="#1c1c1c" stroke-width="2"/>
+          <!-- left grass bank -->
+          <path d="M0 156 q40 6 70 24 q14 8 0 14 L0 200 Z" fill="#5aa24a" stroke="#1c1c1c" stroke-width="2"/>
+          <path d="M0 156 q40 6 70 24" fill="none" stroke="#3f8a36" stroke-width="2" opacity="0.7"/>
 
-          <!-- evergreen at far left -->
-          <path d="M12 44 l18 0 l-7 7 l9 0 l-8 8 l10 0 l-10 9 l11 0 l-13 10 l-1 0 Z" fill="#2f6d44" stroke="#1c1c1c" stroke-width="1.5"/>
+          <!-- layered evergreen -->
+          <g stroke="#1c1c1c" stroke-width="1.6" stroke-linejoin="round">
+            <rect x="19" y="146" width="5" height="9" fill="#6b4a2c" stroke="none"/>
+            <path d="M4 150 L22 120 L40 150 Z" fill="#2f6d44"/>
+            <path d="M7 128 L22 102 L37 128 Z" fill="#357c4e"/>
+            <path d="M10 110 L22 90 L34 110 Z" fill="#2f6d44"/>
+          </g>
 
           <!-- the bare leaning tree -->
-          <g stroke="#3f2c1d" stroke-linecap="round" fill="none">
-            <path d="M60 178 C57 142 62 110 58 66" stroke-width="5"/>
-            <path d="M58 92 C50 84 44 80 37 77" stroke-width="2.4"/>
-            <path d="M58 82 C67 75 75 71 84 69" stroke-width="2.4"/>
-            <path d="M58 72 C54 64 52 58 50 52" stroke-width="2.1"/>
-            <path d="M58 72 C64 64 69 59 73 54" stroke-width="2.1"/>
-            <path d="M58 62 C57 56 57 52 59 46" stroke-width="1.9"/>
+          <g stroke="#43301f" stroke-linecap="round" fill="none">
+            <path d="M64 181 C61 147 67 112 60 64" stroke-width="5"/>
+            <path d="M60 90 C51 83 45 80 38 78" stroke-width="2.6"/>
+            <path d="M38 78 C34 76 32 74 29 71" stroke-width="1.5"/>
+            <path d="M61 80 C70 73 78 70 88 69" stroke-width="2.6"/>
+            <path d="M88 69 C92 68 95 66 98 63" stroke-width="1.5"/>
+            <path d="M60 70 C55 62 53 56 51 49" stroke-width="2.2"/>
+            <path d="M61 70 C66 62 71 57 75 51" stroke-width="2.2"/>
+            <path d="M60 60 C59 54 59 50 61 44" stroke-width="1.9"/>
           </g>
         </svg>
       </div>

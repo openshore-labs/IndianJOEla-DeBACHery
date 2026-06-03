@@ -35,9 +35,12 @@ body {
     var(--paper);
   background-blend-mode: soft-light;
   line-height: 1.4;
-  /* room for bottom nav */
-  padding-bottom: 84px;
-  overflow-x: hidden;
+  /* full-height app shell: content scrolls, tab bar is a real bottom row */
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* faint newsprint grain */
@@ -51,9 +54,18 @@ body {
 .strip {
   position: relative;
   z-index: 1;
+  width: 100%;
   max-width: 640px;
   margin: 0 auto;
   padding: 14px 14px 28px;
+  /* this is the scroll area, between masthead top and the bottom tab bar */
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scroll-padding-top: 12px;
 }
 
 /* =========================================================
@@ -421,8 +433,7 @@ body {
    BOTTOM TAB BAR
    ========================================================= */
 .tabbar {
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
+  flex: 0 0 auto;       /* real bottom row of the flex column — never overlaps */
   z-index: 20;
   display: flex;
   background: var(--paper);

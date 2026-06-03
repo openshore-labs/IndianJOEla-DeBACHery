@@ -15,6 +15,9 @@
     toastTimer = setTimeout(() => toastEl.classList.remove("is-show"), 2600);
   };
 
+  /* ---- the scroll area is now the .strip (not the window) ---- */
+  const scroller = document.querySelector(".strip");
+
   /* ---- bottom-tab scroll spy ---- */
   const tabs = [...document.querySelectorAll(".tab")];
   const sections = tabs
@@ -31,35 +34,21 @@
           }
         });
       },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+      { root: scroller, rootMargin: "-45% 0px -45% 0px", threshold: 0 }
     );
     sections.forEach((s) => obs.observe(s));
   }
 
-  // smooth-scroll handled by CSS; just give tactile active state on tap
+  // tab tap → smooth-scroll the section into view inside the scroll area
   tabs.forEach((t) => {
-    t.addEventListener("click", () => {
+    t.addEventListener("click", (e) => {
+      const el = document.getElementById(t.dataset.tab);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
       tabs.forEach((x) => x.classList.remove("is-active"));
       t.classList.add("is-active");
     });
   });
-
-  /* ---- keep the bottom bar glued to the VISIBLE viewport bottom ----
-     iOS Safari positions `fixed` elements against the layout viewport, so
-     when the URL bar shrinks/expands a gap can open under the tab bar.
-     The VisualViewport API tells us where the real visible bottom is. */
-  const tabbar = document.querySelector(".tabbar");
-  const vv = window.visualViewport;
-  if (tabbar && vv) {
-    const pin = () => {
-      // how far the visible bottom sits above the layout bottom
-      const delta = window.innerHeight - (vv.height + vv.offsetTop);
-      tabbar.style.transform = `translateY(${-delta}px)`;
-    };
-    vv.addEventListener("resize", pin);
-    vv.addEventListener("scroll", pin);
-    window.addEventListener("scroll", pin, { passive: true });
-    window.addEventListener("orientationchange", () => setTimeout(pin, 200));
-    pin();
-  }
 })();
